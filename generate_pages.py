@@ -887,33 +887,9 @@ def generate_simple_pages():
 {footer()}'''
     write_page("resources/index.html", content)
 
-    # Resource guide placeholder pages (content is very long - we'll generate simplified versions)
-    for slug, title, desc in [
-        ("seo-guide", "The Complete Dealership SEO Guide for 2025", "Future-proof strategies to dominate search rankings, drive organic traffic, and capture more leads."),
-        ("facebook-ads-playbook", "2026 Facebook Ads Playbook for Dealerships", "Advanced strategies for inventory-based automotive advertising on Meta platforms."),
-        ("geo-guide", "The Complete Guide to Generative Engine Optimization for Car Dealers", "How to get your dealership cited in AI search engines like ChatGPT, Perplexity, and Google AI Overviews."),
-        ("reputation-guide", "The Dealership Reputation Guide", "How to build, manage, and protect your online reputation."),
-    ]:
-        content = f'''{head(f"{title} | Savvy Dealer", desc, f"resources/{slug}")}
-{nav()}
-  <main class="flex-1">
-{breadcrumb([("Home", "/"), ("Resources", "/resources"), (title, None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{title}</h1>
-        <p class="text-lg text-blue-200">{desc}</p>
-      </div>
-    </section>
-    <section class="py-16 px-4">
-      <div class="max-w-3xl mx-auto prose prose-lg">
-        <p class="text-gray-600">This guide is being migrated to the new platform. Check back soon for the complete content.</p>
-        <p class="text-gray-600">In the meantime, <a href="/book" class="text-blue-600 hover:underline">request a free audit</a> to discuss your dealership's strategy.</p>
-      </div>
-    </section>
-{cta_section()}
-  </main>
-{footer()}'''
-        write_page(f"resources/{slug}.html", content)
+    # Resource guide pages (full content in generate_resources.py)
+    from generate_resources import generate_all_resources
+    generate_all_resources()
 
     # Case Studies
     content = f'''{head("Case Studies - Dealerships Winning with Savvy Dealer", "From improved website performance to crystal-clear attribution, see how we help dealerships drive measurable results.", "case-studies")}
