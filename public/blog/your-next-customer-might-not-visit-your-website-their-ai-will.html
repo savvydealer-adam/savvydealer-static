@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Next Customer Might Not Visit Your Website. Their AI Will. | Savvy Dealer Blog</title>
+  <meta name="description" content="Anthropic just launched Claude for Chrome — an AI assistant that lives inside your browser, watches what you're doing, and takes action on your behalf. This isn't a future prediction. It's happening now. And if you run a dealership, it's going to change how customers find you.">
+  <link rel="canonical" href="https://www.savvydealer.com/blog/your-next-customer-might-not-visit-your-website-their-ai-will">
+  <meta property="og:title" content="Your Next Customer Might Not Visit Your Website. Their AI Will. | Savvy Dealer Blog">
+  <meta property="og:description" content="Anthropic just launched Claude for Chrome — an AI assistant that lives inside your browser, watches what you're doing, and takes action on your behalf. This isn't a future prediction. It's happening now. And if you run a dealership, it's going to change how customers find you.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.savvydealer.com/blog/your-next-customer-might-not-visit-your-website-their-ai-will">
+  <meta property="og:image" content="https://www.savvydealer.com/og-image.png">
+  <meta property="og:site_name" content="Savvy Dealer">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="recaptcha-site-key" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e3a5f',900:'#0a2540',950:'#061a30' },
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #2563eb 100%); }
+    .cta-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0a2540 100%); }
+  </style>
+  
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
+      <a href="/" class="flex items-center gap-2" aria-label="Savvy Dealer Home">
+        <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10" loading="eager">
+      </a>
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
+        <!-- Products dropdown -->
+        <div class="relative">
+          <button id="products-dropdown-btn" class="text-sm font-medium text-gray-600 hover:text-blue-700 flex items-center gap-1">
+            Products
+            <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="products-dropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+            <a href="/products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">All Products</a>
+            <hr class="my-1 border-gray-100">
+            <a href="/fully-managed-marketing" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Fully Managed Marketing</a>
+            <a href="/dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer Websites</a>
+            <a href="/independent-dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Independent Dealer Websites</a>
+            <a href="/dealer-seo" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer SEO + GEO</a>
+            <a href="/vehicle-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Vehicle Ads</a>
+            <a href="/facebook-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Facebook Ads</a>
+            <a href="/ppc-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">PPC Ads</a>
+            <a href="/anti-dashboard" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Anti-Dashboard AI</a>
+          </div>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700">Contact</button>
+        <a href="/book" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition">Request Free Audit</a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white px-4 py-4" aria-label="Mobile navigation">
+      <div class="flex flex-col gap-3">
+        <button id="mobile-products-btn" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-blue-700 py-1">
+          Products
+          <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-products-menu" class="hidden pl-4 flex flex-col gap-2">
+          <a href="/products" class="text-sm text-gray-600 hover:text-blue-700 py-1">All Products</a>
+          <a href="/fully-managed-marketing" class="text-sm text-gray-600 hover:text-blue-700 py-1">Fully Managed Marketing</a>
+          <a href="/dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer Websites</a>
+          <a href="/independent-dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Independent Dealer Websites</a>
+          <a href="/dealer-seo" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer SEO + GEO</a>
+          <a href="/vehicle-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Vehicle Ads</a>
+          <a href="/facebook-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Facebook Ads</a>
+          <a href="/ppc-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">PPC Ads</a>
+          <a href="/anti-dashboard" class="text-sm text-gray-600 hover:text-blue-700 py-1">Anti-Dashboard AI</a>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1 text-left">Contact</button>
+        <a href="/book" class="inline-flex justify-center items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700">Request Free Audit</a>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-1">
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm">
+    <a href="/" class="text-blue-600 hover:underline">Home</a> <span class="text-gray-400 mx-1">/</span> <a href="/blog" class="text-blue-600 hover:underline">Blog</a> <span class="text-gray-400 mx-1">/</span> <span class="text-gray-500">Your Next Customer Might Not Visit Your Website. T...</span>
+  </nav>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.savvydealer.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.savvydealer.com/blog"},{"@type":"ListItem","position":3,"name":"Your Next Customer Might Not Visit Your Website. T...","item":"https://www.savvydealer.com"}]}</script>
+    <article class="py-12 px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-8">
+          <div class="flex items-center gap-3 mb-4 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">AI & Technology</span>
+            <span class="text-sm text-gray-500">2025-12-22</span>
+            <span class="text-sm text-gray-500">12 min read</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Your Next Customer Might Not Visit Your Website. Their AI Will.</h1>
+          <p class="text-lg text-gray-600 mb-4">Anthropic just launched Claude for Chrome — an AI assistant that lives inside your browser, watches what you're doing, and takes action on your behalf. This isn't a future prediction. It's happening now. And if you run a dealership, it's going to change how customers find you.</p>
+          <p class="text-sm text-gray-500">By Savvy Dealer Team</p>
+        </div>
+        <img src="/images/ai_browser_analyzing_dealership.png" alt="Your Next Customer Might Not Visit Your Website. Their AI Will." class="w-full rounded-xl mb-8" loading="lazy">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed my-4">Anthropic just launched Claude for Chrome — an AI assistant that lives inside your browser, watches what you're doing, and takes action on your behalf.</p>
+<p class="text-gray-700 leading-relaxed my-4">It can read web pages. Fill out forms. Compare products across multiple tabs. Summarize information. And do it all without the user lifting a finger.</p>
+<p class="text-gray-700 leading-relaxed my-4">This isn't a future prediction. It's happening now.</p>
+<p class="text-gray-700 leading-relaxed my-4">And if you run a dealership, it's going to change how customers find you, research you, and decide whether to contact you.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">What Is Claude for Chrome?</h2>
+<p class="text-gray-700 leading-relaxed my-4">Claude for Chrome is a browser extension that embeds AI directly into Google Chrome. Users can ask Claude to browse websites, extract information, fill out forms, and complete tasks — all from a sidebar while they browse.</p>
+<p class="text-gray-700 leading-relaxed my-4">Think of it as a personal assistant that can see everything happening in your browser and act on your behalf.</p>
+<p class="text-gray-700 leading-relaxed my-4">Anthropic (the company behind Claude) has been testing it internally for tasks like scheduling meetings, drafting emails, and testing website features. Now they're rolling it out to paying subscribers.</p>
+<p class="text-gray-700 leading-relaxed my-4">Other companies are racing to do the same thing. Perplexity launched its own AI browser called Comet. OpenAI is reportedly building one too. Google is embedding its Gemini AI deeper into Chrome.</p>
+<p class="text-gray-700 leading-relaxed my-4">The browser is becoming the new battleground for AI — and dealership websites are directly in the crossfire.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">What This Means for Car Shoppers</h2>
+<p class="text-gray-700 leading-relaxed my-4">Here's what your customers will soon be able to do:</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Instant comparison shopping.</strong> A shopper can tell Claude: "Compare the 2024 Honda CR-V inventory at these five dealerships and show me the best price within 50 miles." Claude handles the tab-switching, reading, and summarizing.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Automated lead submissions.</strong> Shoppers could have Claude fill out inquiry forms at multiple dealerships simultaneously. More leads for you — but potentially lower intent per lead.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Real-time vehicle research.</strong> Claude can read a VDP, pull specs, cross-reference reviews, and summarize everything in seconds. Your customers will arrive more informed than ever before.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Price alerts and monitoring.</strong> Users can set recurring tasks. Claude could check your inventory daily and notify a shopper when a specific vehicle drops in price.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>The bottom line:</strong> The friction of car shopping is about to collapse. Customers who used to spend hours clicking through dealer sites will get the same information in minutes — without ever scrolling through your VDPs.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">The Threats for Dealerships</h2>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Price transparency accelerates.</strong> If shoppers can instantly compare your pricing against every competitor without effort, hiding behind "call for price" becomes even more obsolete. Your pricing strategy needs to assume total transparency.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Less time on your site.</strong> If Claude summarizes your inventory in a sidebar, customers may never actually browse your website. They'll get the information without the experience you designed. Your content needs to be structured for AI extraction, not just human browsing.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Lead quality changes.</strong> Expect more form submissions from AI-assisted browsing. A customer might have Claude submit inquiries to ten dealerships at once. Your lead scoring and follow-up speed become even more critical.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>SEO isn't enough anymore.</strong> Traditional search optimization gets you found on Google. But if an AI agent is summarizing dealer websites for a shopper, you need to be optimized for AI readability — not just search engine crawlers.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">The Opportunities for Dealerships</h2>
+<p class="text-gray-700 leading-relaxed my-4">It's not all downside. Dealers who move fast can use the same technology to their advantage.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Competitive intelligence on autopilot.</strong> You could use Claude for Chrome to monitor competitor pricing, inventory changes, and promotions across multiple sites — daily, automatically. No more manual mystery shopping.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Website QA and testing.</strong> Anthropic specifically mentions using Claude internally to test website features. Dealers (or their vendors) could use it to audit their own sites for speed, usability, and content accuracy.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Faster market research.</strong> Want to know how other dealers in your market are positioning a specific model? Claude can pull that data in minutes instead of hours.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>First-mover advantage in GEO.</strong> This is the big one. If AI agents are browsing and summarizing dealer websites for shoppers, your site structure and content need to be AI-readable. Dealers optimized for Generative Engine Optimization (GEO) will show up in these AI-assisted shopping workflows. Dealers who aren't will get skipped entirely.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">What Should Dealers Do Right Now?</h2>
+<h3 class="text-xl font-semibold mt-8 mb-3">1. Audit your website for AI readability</h3>
+<p class="text-gray-700 leading-relaxed my-4">Is your content structured clearly? Are your VDPs easy to parse? Can an AI quickly extract the key information a shopper needs? If your site is cluttered, slow, or confusing to navigate, it will be just as confusing to an AI agent.</p>
+<h3 class="text-xl font-semibold mt-8 mb-3">2. Prioritize speed</h3>
+<p class="text-gray-700 leading-relaxed my-4">AI agents will favor sites that load fast and deliver information quickly. If your website takes 5 seconds to load, Claude isn't going to wait around — and neither will the shopper using it.</p>
+<h3 class="text-xl font-semibold mt-8 mb-3">3. Think beyond SEO</h3>
+<p class="text-gray-700 leading-relaxed my-4">Search engine optimization is still important, but it's no longer enough. You need to consider how your content appears to AI systems like ChatGPT, Perplexity, and now browser-based agents like Claude. This is what we call Generative Engine Optimization (GEO).</p>
+<h3 class="text-xl font-semibold mt-8 mb-3">4. Prepare for lead volume changes</h3>
+<p class="text-gray-700 leading-relaxed my-4">If AI makes it easier to submit inquiries, you'll likely see more leads — but not necessarily better ones. Your follow-up process and lead scoring need to be ready.</p>
+<h3 class="text-xl font-semibold mt-8 mb-3">5. Watch this space closely</h3>
+<p class="text-gray-700 leading-relaxed my-4">Browser AI is evolving fast. The dealers who pay attention now will have an advantage over those who wait until it's mainstream.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">The Bottom Line</h2>
+<p class="text-gray-700 leading-relaxed my-4">The way customers research and shop for vehicles is about to change dramatically.</p>
+<p class="text-gray-700 leading-relaxed my-4">Today, they browse your website. Tomorrow, their AI might browse it for them — summarizing your inventory, comparing your prices, and deciding whether you're worth contacting.</p>
+<p class="text-gray-700 leading-relaxed my-4">The question isn't whether this will happen. It's whether your dealership will be ready when it does.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">Want to make sure your website is ready for AI-powered shopping?</h2>
+<p class="text-gray-700 leading-relaxed my-4">At Savvy Dealer, we've been optimizing dealership websites for AI discoverability since before it was mainstream. Our GEO strategies help dealers show up in ChatGPT, Perplexity, and now browser-based AI agents.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong><a href="/contact" class="text-blue-600 hover:underline">Contact us for a free website audit</a></strong> and see how your site performs in the age of AI.</p>
+<hr class="my-8 border-gray-200">
+<p class="text-gray-700 leading-relaxed my-4"><em>Savvy Dealer is a digital marketing company serving automotive dealerships. We specialize in AI-optimized websites, GEO, PPC, and transparent reporting. We don't outspend the competition — we outsmart them.</em></p>
+        </div>
+      </div>
+    </article>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Your Next Customer Might Not Visit Your Website. Their AI Will.","author":{"@type":"Person","name":"Savvy Dealer Team"},"datePublished":"2025-12-22","publisher":{"@type":"Organization","name":"Savvy Dealer","url":"https://www.savvydealer.com"}}</script>
+  <section class="cta-bg text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Dominate Your Market?</h2>
+      <p class="text-lg text-blue-100 mb-8">See how Savvy Dealer can help your dealership drive measurable results.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Request Free Audit</a>
+        <a href="tel:8135013229" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition">Call Now: (813) 501-3229</a>
+      </div>
+    </div>
+  </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10 mb-4 brightness-200">
+          <p class="text-sm text-gray-400 mb-4">Digital marketing for auto dealers. We don't outspend the competition - we outsmart them.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Products</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/fully-managed-marketing" class="hover:text-white">Fully Managed Marketing</a></li>
+            <li><a href="/facebook-ads" class="hover:text-white">Facebook Ads</a></li>
+            <li><a href="/ppc-ads" class="hover:text-white">PPC Ads</a></li>
+            <li><a href="/dealer-seo" class="hover:text-white">Dealer SEO + GEO</a></li>
+            <li><a href="/dealer-websites" class="hover:text-white">Dealer Websites</a></li>
+            <li><a href="/independent-dealer-websites" class="hover:text-white">Independent Dealer Websites</a></li>
+            <li><a href="/vehicle-ads" class="hover:text-white">Vehicle Ads</a></li>
+            <li><a href="/anti-dashboard" class="hover:text-white">Anti-Dashboard AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="hover:text-white">About</a></li>
+            <li><a href="/blog" class="hover:text-white">Blog</a></li>
+            <li><a href="/case-studies" class="hover:text-white">Case Studies</a></li>
+            <li><a href="/resources" class="hover:text-white">Resources</a></li>
+            <li><a href="/book" class="hover:text-white">Book a Demo</a></li>
+            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="/end-user-agreement" class="hover:text-white">End User Agreement</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:8135013229" class="hover:text-white">(813) 501-3229</a></li>
+            <li><a href="mailto:support@savvydealer.com" class="hover:text-white">support@savvydealer.com</a></li>
+            <li class="text-gray-400">2705 Wilson Rd, Land O Lakes, FL 34638</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        <p>&copy; 2024-2026 Savvy Dealer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+    <!-- Lead Form Modal -->
+  <div id="lead-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
+    <div class="modal-overlay absolute inset-0 bg-black/50"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 z-10">
+      <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+      <p class="text-gray-600 mb-6">Fill out the form below and we'll be in touch shortly.</p>
+      <form data-ajax action="/api/lead-form">
+        <div class="space-y-4">
+          <div>
+            <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input type="text" id="modal-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" id="modal-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <input type="tel" id="modal-phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label>
+            <input type="text" id="modal-dealership" name="dealership" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea id="modal-message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/nav.js"></script>
+  <script src="/js/forms.js"></script>
+  <script src="/js/lead-modal.js"></script>
+</body>
+</html>

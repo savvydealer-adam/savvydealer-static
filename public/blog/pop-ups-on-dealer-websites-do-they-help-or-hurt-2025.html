@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pop-ups on Dealer Websites: Do They Help or Hurt? (2025) | Savvy Dealer Blog</title>
+  <meta name="description" content="Most shoppers don't want pop-ups, especially on phones. They interrupt the task (price, payments, call/text, directions) and feel pushy. Google explicitly says to avoid intrusive interstitials.">
+  <link rel="canonical" href="https://www.savvydealer.com/blog/pop-ups-on-dealer-websites-do-they-help-or-hurt-2025">
+  <meta property="og:title" content="Pop-ups on Dealer Websites: Do They Help or Hurt? (2025) | Savvy Dealer Blog">
+  <meta property="og:description" content="Most shoppers don't want pop-ups, especially on phones. They interrupt the task (price, payments, call/text, directions) and feel pushy. Google explicitly says to avoid intrusive interstitials.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.savvydealer.com/blog/pop-ups-on-dealer-websites-do-they-help-or-hurt-2025">
+  <meta property="og:image" content="https://www.savvydealer.com/og-image.png">
+  <meta property="og:site_name" content="Savvy Dealer">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="recaptcha-site-key" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e3a5f',900:'#0a2540',950:'#061a30' },
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #2563eb 100%); }
+    .cta-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0a2540 100%); }
+  </style>
+  
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
+      <a href="/" class="flex items-center gap-2" aria-label="Savvy Dealer Home">
+        <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10" loading="eager">
+      </a>
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
+        <!-- Products dropdown -->
+        <div class="relative">
+          <button id="products-dropdown-btn" class="text-sm font-medium text-gray-600 hover:text-blue-700 flex items-center gap-1">
+            Products
+            <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="products-dropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+            <a href="/products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">All Products</a>
+            <hr class="my-1 border-gray-100">
+            <a href="/fully-managed-marketing" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Fully Managed Marketing</a>
+            <a href="/dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer Websites</a>
+            <a href="/independent-dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Independent Dealer Websites</a>
+            <a href="/dealer-seo" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer SEO + GEO</a>
+            <a href="/vehicle-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Vehicle Ads</a>
+            <a href="/facebook-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Facebook Ads</a>
+            <a href="/ppc-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">PPC Ads</a>
+            <a href="/anti-dashboard" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Anti-Dashboard AI</a>
+          </div>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700">Contact</button>
+        <a href="/book" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition">Request Free Audit</a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white px-4 py-4" aria-label="Mobile navigation">
+      <div class="flex flex-col gap-3">
+        <button id="mobile-products-btn" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-blue-700 py-1">
+          Products
+          <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-products-menu" class="hidden pl-4 flex flex-col gap-2">
+          <a href="/products" class="text-sm text-gray-600 hover:text-blue-700 py-1">All Products</a>
+          <a href="/fully-managed-marketing" class="text-sm text-gray-600 hover:text-blue-700 py-1">Fully Managed Marketing</a>
+          <a href="/dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer Websites</a>
+          <a href="/independent-dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Independent Dealer Websites</a>
+          <a href="/dealer-seo" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer SEO + GEO</a>
+          <a href="/vehicle-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Vehicle Ads</a>
+          <a href="/facebook-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Facebook Ads</a>
+          <a href="/ppc-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">PPC Ads</a>
+          <a href="/anti-dashboard" class="text-sm text-gray-600 hover:text-blue-700 py-1">Anti-Dashboard AI</a>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1 text-left">Contact</button>
+        <a href="/book" class="inline-flex justify-center items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700">Request Free Audit</a>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-1">
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm">
+    <a href="/" class="text-blue-600 hover:underline">Home</a> <span class="text-gray-400 mx-1">/</span> <a href="/blog" class="text-blue-600 hover:underline">Blog</a> <span class="text-gray-400 mx-1">/</span> <span class="text-gray-500">Pop-ups on Dealer Websites: Do They Help or Hurt? ...</span>
+  </nav>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.savvydealer.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.savvydealer.com/blog"},{"@type":"ListItem","position":3,"name":"Pop-ups on Dealer Websites: Do They Help or Hurt? ...","item":"https://www.savvydealer.com"}]}</script>
+    <article class="py-12 px-4">
+      <div class="max-w-3xl mx-auto">
+        <div class="mb-8">
+          <div class="flex items-center gap-3 mb-4 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">SEO</span>
+            <span class="text-sm text-gray-500">2025-09-25</span>
+            <span class="text-sm text-gray-500">7 min read</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Pop-ups on Dealer Websites: Do They Help or Hurt? (2025)</h1>
+          <p class="text-lg text-gray-600 mb-4">Most shoppers don't want pop-ups, especially on phones. They interrupt the task (price, payments, call/text, directions) and feel pushy. Google explicitly says to avoid intrusive interstitials.</p>
+          <p class="text-sm text-gray-500">By Savvy Dealer Team</p>
+        </div>
+        <img src="/images/Website_popup_frustration_mobile_b40fa9a2.png" alt="Pop-ups on Dealer Websites: Do They Help or Hurt? (2025)" class="w-full rounded-xl mb-8" loading="lazy">
+        <div class="prose prose-lg max-w-none">
+          <p class="text-gray-700 leading-relaxed my-4"><strong>Audience:</strong> Dealer principals, GMs, GSMs, Internet directors</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Reading time:</strong> ~7 minutes</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**The Short Read**</h2>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Most shoppers don't want pop-ups, especially on phones.</strong> They interrupt the task (price, payments, call/text, directions) and feel pushy. NN/g's long-running usability research labels modal pop-ups among the most disliked patterns on the web.</li>
+</ul>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Google explicitly says to avoid intrusive interstitials/pop-ups.</strong> Their guidance recommends small, dismissible banners instead of content-blocking dialogs. Intrusive interstitials on mobile have been a ranking concern since <strong>January 10, 2017</strong> and the documentation was updated <strong>June 17, 2025</strong>.</li>
+</ul>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Performance matters more than ever.</strong> Google's responsiveness metric <strong>INP</strong> (Interaction to Next Paint) replaced FID in <strong>March 2024</strong>. Aim for <strong>INP ≤ 200 ms</strong> at the 75th percentile. Pop-ups and heavy third-party scripts (chat, consent, behavior tracking) commonly slow INP and cause layout shift (CLS).</li>
+</ul>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Industry standards back this up.</strong> The Coalition for Better Ads lists <strong>mobile pop-up ads</strong> among the <strong>least-preferred</strong> experiences globally.</li>
+</ul>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Bottom line:</strong> Replace auto-open pop-ups with lighter, <strong>non-modal</strong> prompts tied to real engagement. You'll protect mobile conversions, speed, and SEO - without sacrificing lead volume or quality.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**What shoppers actually do on your mobile site**</h2>
+<p class="text-gray-700 leading-relaxed my-4">When a shopper lands on your homepage, SRP, or VDP on their phone, they usually want to:</p>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li>Check <strong>price & payments</strong></li>
+<li>Tap <strong>call/text</strong></li>
+<li>Look at <strong>photos/video</strong></li>
+<li>Get <strong>directions</strong> or <strong>hours</strong></li>
+<li>Start <strong>trade</strong> or <strong>credit</strong> flows</li>
+</ul>
+<p class="text-gray-700 leading-relaxed my-4">A pop-up that immediately covers the screen slows them down, raises frustration, and often leads to mis-taps or bounces - especially if there are <strong>multiple</strong> overlays (cookie, chat, promo) stacked together. Decades of UX research show people dislike pop-ups and rate modal versions as the <strong>most disruptive</strong>.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**What Google says (plain English)**</h2>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Avoid intrusive interstitials and dialogs.</strong> These block content, frustrate users, and can hurt search performance. Prefer <strong>small banners</strong> that don't block the page. (Updated <strong>June 17, 2025</strong>.)</li>
+</ul>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Mobile ranking context:</strong> Since <strong>Jan 10, 2017</strong>, pages where content isn't easily accessible from the mobile search results <strong>may not rank as highly</strong>. Legal notices and login gates are exceptions; small, dismissible banners are fine.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4">**Why pop-ups often hurt performance (and conversions)**</h2>
+<p class="text-gray-700 leading-relaxed my-4">1. <strong>Responsiveness (INP):</strong> INP measures how fast pages respond to taps/clicks across the whole visit. It became a Core Web Vital on <strong>March 12, 2024</strong>; <strong>≤ 200 ms</strong> at p75 is considered <strong>good</strong>. Extra scripts, event handlers, and modal frameworks increase main-thread work, pushing INP higher - precisely when shoppers try to interact.</p>
+<p class="text-gray-700 leading-relaxed my-4">2. <strong>Third-party scripts:</strong> Chat widgets, behavior tracking, tag managers, and consent tools commonly add long tasks. The <strong>2024 Web Almanac</strong> notes scripts from behavior tracking, <strong>consent providers</strong>, and CDNs are major contributors to <strong>poor INP</strong>, especially on mobile.</p>
+<p class="text-gray-700 leading-relaxed my-4">3. <strong>Visual stability (CLS):</strong> Cookie notices and top-of-screen banners frequently <strong>shift the layout</strong>, causing mis-taps. web.dev calls cookie notices a <strong>common source of CLS</strong>, and warns that clicking "Accept" often triggers <strong>heavy processing</strong> that worsens <strong>INP</strong>.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**"But pop-ups get me more leads…" (The quality trap)**</h2>
+<p class="text-gray-700 leading-relaxed my-4">Auto-open pop-ups can bump raw submit counts, but they also:</p>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li>Drive <strong>fake/low-intent</strong> emails and phone numbers</li>
+<li>Hurt <strong>mobile UX</strong>, leading to more bounces and fewer VDP interactions</li>
+<li>Risk <strong>SEO</strong> headwinds if they block content</li>
+<li>Degrade <strong>INP/CLS</strong>, which correlates with worse user experience</li>
+</ul>
+<p class="text-gray-700 leading-relaxed my-4">When dealers replace pop-ups with <strong>well-timed, non-modal prompts</strong>, lead _quality_ and downstream actions (calls, appointments set) typically improve. You'll also reduce support time spent on junk leads.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**What to do instead (a simple playbook)**</h2>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Use lightweight, non-modal prompts that appear after engagement - not on page load.</strong></p>
+<p class="text-gray-700 leading-relaxed my-4">1. <strong>Replace pop-ups with a slim sticky bar</strong> (footer or header)</p>
+<p class="text-gray-700 leading-relaxed my-4">Examples: "Get E-Price," "Check Availability," "Save Vehicle," "See Payment Options." Only show after the shopper scrolls, swipes gallery images, or opens payments.</p>
+<p class="text-gray-700 leading-relaxed my-4">2. <strong>Make chat manual-open</strong> Show a small chat bubble; load the heavy SDK after the user taps it. This reduces script cost and responsiveness issues.</p>
+<p class="text-gray-700 leading-relaxed my-4">3. <strong>Keep cookie consent small and stable</strong> Prefer a <strong>footer banner</strong> that doesn't shift content. Load CMP scripts <strong>asynchronously</strong> and ensure the <strong>Accept</strong> click doesn't trigger a big processing spike.</p>
+<p class="text-gray-700 leading-relaxed my-4">4. <strong>One prompt at a time</strong> Never stack cookie + promo + chat on first paint. It feels aggressive and increases bounce risk. NN/g's testing shows pop-ups - especially modal - are the most disliked.</p>
+<p class="text-gray-700 leading-relaxed my-4">5. <strong>Trim third-party code</strong> Remove low-ROI tags, and load necessary scripts with async/defer to reduce main-thread blocking. Chrome/Lighthouse explicitly warns about the impact of third-party code.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**Quick wins you can do this week**</h2>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li><strong>Turn off auto-open</strong> for any promo or chat pop-up on mobile.</li>
+<li><strong>Swap</strong> the modal for a <strong>small, dismissible bar</strong> on the VDP that appears after the shopper scrolls.</li>
+<li><strong>Move cookie notice</strong> to the <strong>footer</strong>, reserve space or overlay (no push-down), and <strong>load CMP scripts async</strong>.</li>
+<li><strong>Audit scripts</strong> in Chrome DevTools → Performance. Remove or defer anything non-essential.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4">**How to check that it's working (15-minute sanity check)**</h2>
+<p class="text-gray-700 leading-relaxed my-4">1. <strong>PageSpeed Insights</strong>: plug in a few high-traffic URLs (home, SRP, VDP). Look at <strong>INP</strong> and <strong>CLS</strong> in the _field_ (CrUX) summary. Goal: <strong>INP ≤ 200 ms</strong>, <strong>CLS ≤ 0.10</strong> on mobile.</p>
+<p class="text-gray-700 leading-relaxed my-4">2. <strong>Google Search Console → Core Web Vitals</strong>: confirm improvements hold across real-user traffic.</p>
+<p class="text-gray-700 leading-relaxed my-4">3. <strong>Business KPIs</strong> (mobile only): tap-to-call, VDP image swipes, payment tool opens, and _valid_ lead rate. Flat or better after removing pop-ups = a win.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**Frequently asked questions**</h2>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Q: Are cookie banners or legal interstitials "bad" for SEO?</strong></p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>A:</strong> Google's ranking guidance targets <strong>intrusive</strong> interstitials. <strong>Legal</strong> prompts (cookie use, age gates) are <strong>exempt</strong>-implement them in a way that doesn't block content more than necessary. A small, stable banner is preferred.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Q: If I already use pop-ups, should I rip them out?</strong></p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>A:</strong> Start with <strong>mobile</strong>. Turn off auto-open pop-ups and convert them to a small sticky bar after engagement. Watch <strong>INP/CLS</strong>, tap-to-call, and lead quality for two weeks.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Q: What's a "good" INP, and why should I care?</strong></p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>A:</strong> <strong>INP ≤ 200 ms</strong> means your site feels snappy. It replaced FID as a Core Web Vital in <strong>March 2024</strong> and is part of what Google wants to reward in page experience. Slow INP often traces back to heavy scripts and pop-ups.</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>Q: Are pop-ups _always_ wrong?</strong></p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>A:</strong> If they <strong>only</strong> appear <strong>after</strong> a shopper asks for something (e.g., tapping "Schedule Test Drive") and they don't block the entire screen, they can be fine. The problem is <strong>unsolicited</strong>, <strong>auto-open</strong>, <strong>full-screen</strong> interruptions - particularly on mobile.</p>
+<h2 class="text-2xl font-bold mt-10 mb-4">**Simple implementation checklist (copy this)**</h2>
+<ul class="list-disc pl-6 space-y-1 my-4">
+<li>No <strong>auto-open</strong> modals on mobile (promo, chat, newsletter).</li>
+<li>Replace with <strong>1</strong> slim sticky bar; show only after engagement.</li>
+<li>Chat opens <strong>only</strong> when tapped; lazy-load the SDK.</li>
+<li>Cookie banner in <strong>footer</strong>, stable (no push-down), scripts load <strong>async</strong>, Accept click <strong>yields</strong> work.</li>
+<li>Remove/defer low-ROI third-party tags; use async/defer.</li>
+<li>Verify <strong>INP ≤ 200 ms</strong> and <strong>CLS ≤ 0.10</strong> in PageSpeed Insights / Search Console.</li>
+</ul>
+<h2 class="text-2xl font-bold mt-10 mb-4">**The takeaway for dealers**</h2>
+<p class="text-gray-700 leading-relaxed my-4">If you want <strong>more calls, better leads, and stronger SEO</strong> on mobile:</p>
+<p class="text-gray-700 leading-relaxed my-4"><strong>remove auto-open pop-ups</strong> → <strong>use a small, dismissible bar after engagement</strong> → <strong>keep chat manual-open</strong> → <strong>watch INP/CLS and lead quality</strong>.</p>
+<p class="text-gray-700 leading-relaxed my-4">It's a low-risk move that usually pays off in happier shoppers and cleaner data.</p>
+        </div>
+      </div>
+    </article>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Pop-ups on Dealer Websites: Do They Help or Hurt? (2025)","author":{"@type":"Person","name":"Savvy Dealer Team"},"datePublished":"2025-09-25","publisher":{"@type":"Organization","name":"Savvy Dealer","url":"https://www.savvydealer.com"}}</script>
+  <section class="cta-bg text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Dominate Your Market?</h2>
+      <p class="text-lg text-blue-100 mb-8">See how Savvy Dealer can help your dealership drive measurable results.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Request Free Audit</a>
+        <a href="tel:8135013229" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition">Call Now: (813) 501-3229</a>
+      </div>
+    </div>
+  </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10 mb-4 brightness-200">
+          <p class="text-sm text-gray-400 mb-4">Digital marketing for auto dealers. We don't outspend the competition - we outsmart them.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Products</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/fully-managed-marketing" class="hover:text-white">Fully Managed Marketing</a></li>
+            <li><a href="/facebook-ads" class="hover:text-white">Facebook Ads</a></li>
+            <li><a href="/ppc-ads" class="hover:text-white">PPC Ads</a></li>
+            <li><a href="/dealer-seo" class="hover:text-white">Dealer SEO + GEO</a></li>
+            <li><a href="/dealer-websites" class="hover:text-white">Dealer Websites</a></li>
+            <li><a href="/independent-dealer-websites" class="hover:text-white">Independent Dealer Websites</a></li>
+            <li><a href="/vehicle-ads" class="hover:text-white">Vehicle Ads</a></li>
+            <li><a href="/anti-dashboard" class="hover:text-white">Anti-Dashboard AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="hover:text-white">About</a></li>
+            <li><a href="/blog" class="hover:text-white">Blog</a></li>
+            <li><a href="/case-studies" class="hover:text-white">Case Studies</a></li>
+            <li><a href="/resources" class="hover:text-white">Resources</a></li>
+            <li><a href="/book" class="hover:text-white">Book a Demo</a></li>
+            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="/end-user-agreement" class="hover:text-white">End User Agreement</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:8135013229" class="hover:text-white">(813) 501-3229</a></li>
+            <li><a href="mailto:support@savvydealer.com" class="hover:text-white">support@savvydealer.com</a></li>
+            <li class="text-gray-400">2705 Wilson Rd, Land O Lakes, FL 34638</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        <p>&copy; 2024-2026 Savvy Dealer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+    <!-- Lead Form Modal -->
+  <div id="lead-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
+    <div class="modal-overlay absolute inset-0 bg-black/50"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 z-10">
+      <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+      <p class="text-gray-600 mb-6">Fill out the form below and we'll be in touch shortly.</p>
+      <form data-ajax action="/api/lead-form">
+        <div class="space-y-4">
+          <div>
+            <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input type="text" id="modal-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" id="modal-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <input type="tel" id="modal-phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label>
+            <input type="text" id="modal-dealership" name="dealership" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea id="modal-message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/nav.js"></script>
+  <script src="/js/forms.js"></script>
+  <script src="/js/lead-modal.js"></script>
+</body>
+</html>

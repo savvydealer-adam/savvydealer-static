@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Savvy Blog - Automotive Digital Marketing Insights</title>
+  <meta name="description" content="Expert insights on automotive digital marketing, dealer websites, SEO, PPC, and industry trends.">
+  <link rel="canonical" href="https://www.savvydealer.com/blog">
+  <meta property="og:title" content="The Savvy Blog - Automotive Digital Marketing Insights">
+  <meta property="og:description" content="Expert insights on automotive digital marketing, dealer websites, SEO, PPC, and industry trends.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.savvydealer.com/blog">
+  <meta property="og:image" content="https://www.savvydealer.com/og-image.png">
+  <meta property="og:site_name" content="Savvy Dealer">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="recaptcha-site-key" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e3a5f',900:'#0a2540',950:'#061a30' },
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #2563eb 100%); }
+    .cta-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0a2540 100%); }
+  </style>
+  
+</head>
+<body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <!-- Header -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
+      <a href="/" class="flex items-center gap-2" aria-label="Savvy Dealer Home">
+        <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10" loading="eager">
+      </a>
+      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
+        <!-- Products dropdown -->
+        <div class="relative">
+          <button id="products-dropdown-btn" class="text-sm font-medium text-gray-600 hover:text-blue-700 flex items-center gap-1">
+            Products
+            <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <div id="products-dropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+            <a href="/products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">All Products</a>
+            <hr class="my-1 border-gray-100">
+            <a href="/fully-managed-marketing" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Fully Managed Marketing</a>
+            <a href="/dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer Websites</a>
+            <a href="/independent-dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Independent Dealer Websites</a>
+            <a href="/dealer-seo" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer SEO + GEO</a>
+            <a href="/vehicle-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Vehicle Ads</a>
+            <a href="/facebook-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Facebook Ads</a>
+            <a href="/ppc-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">PPC Ads</a>
+            <a href="/anti-dashboard" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Anti-Dashboard AI</a>
+          </div>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700">Contact</button>
+        <a href="/book" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition">Request Free Audit</a>
+      </nav>
+      <!-- Mobile menu button -->
+      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white px-4 py-4" aria-label="Mobile navigation">
+      <div class="flex flex-col gap-3">
+        <button id="mobile-products-btn" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-blue-700 py-1">
+          Products
+          <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </button>
+        <div id="mobile-products-menu" class="hidden pl-4 flex flex-col gap-2">
+          <a href="/products" class="text-sm text-gray-600 hover:text-blue-700 py-1">All Products</a>
+          <a href="/fully-managed-marketing" class="text-sm text-gray-600 hover:text-blue-700 py-1">Fully Managed Marketing</a>
+          <a href="/dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer Websites</a>
+          <a href="/independent-dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Independent Dealer Websites</a>
+          <a href="/dealer-seo" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer SEO + GEO</a>
+          <a href="/vehicle-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Vehicle Ads</a>
+          <a href="/facebook-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Facebook Ads</a>
+          <a href="/ppc-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">PPC Ads</a>
+          <a href="/anti-dashboard" class="text-sm text-gray-600 hover:text-blue-700 py-1">Anti-Dashboard AI</a>
+        </div>
+        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1 text-left">Contact</button>
+        <a href="/book" class="inline-flex justify-center items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700">Request Free Audit</a>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-1">
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm">
+    <a href="/" class="text-blue-600 hover:underline">Home</a> <span class="text-gray-400 mx-1">/</span> <span class="text-gray-500">Blog</span>
+  </nav>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.savvydealer.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.savvydealer.com"}]}</script>
+    <section class="hero-bg text-white py-16 px-4 text-center">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">The Savvy Blog</h1>
+        <p class="text-lg text-blue-200">Expert insights on automotive digital marketing, dealer websites, SEO, PPC, and industry trends.</p>
+      </div>
+    </section>
+    <section class="py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="/blog/ai-compatibility-tool-findings" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/ai_dealership_compatibility_concept_art.png" alt="We Released the AI Compatibility Tool. Here's What We Found." class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Research</span>
+            <span class="text-xs text-gray-500">2026-01-18</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">We Released the AI Compatibility Tool. Here's What We Found.</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Less than 20% of dealership websites are not blocking AI. Even fewer have pages that are actually compliant with AI best practices. That's what we found when we started testing.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Dealership Websites</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">GEO</span></div>
+        </div>
+      </a>
+      <a href="/blog/lightning-fast-dealer-websites" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/lightning_fast_dealer_website.png" alt="Lightning-Fast Dealer Websites: The Short Version" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Website Performance</span>
+            <span class="text-xs text-gray-500">2026-01-16</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Lightning-Fast Dealer Websites: The Short Version</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">When your site loads fast, more shoppers become leads. That's it. The rest - SEO wins, lower ad waste, and better placement in new AI-style search - flows from that one fact.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Speed</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Conversions</span></div>
+        </div>
+      </a>
+      <a href="/blog/why-most-dealer-websites-dont-convert-traffic" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/website_conversion_speed_illustration.png" alt="Why Most Dealer Websites Don't Convert Traffic (And Why Website Speed Is Usually a Platform Problem)" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Website Performance</span>
+            <span class="text-xs text-gray-500">2026-01-15</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Why Most Dealer Websites Don't Convert Traffic (And Why Website Speed Is Usually a Platform Problem)</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">A lot of dealers think they have a traffic problem. But most stores actually have a conversion problem: visitors leave without calling, submitting a lead, or taking the next step. The biggest silent killer? Your website is too slow where it matters.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Speed</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Conversions</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Core Web Vitals</span></div>
+        </div>
+      </a>
+      <a href="/blog/why-paid-search-costs-are-rising-for-car-dealers-in-2026" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/rising_paid_search_costs_illustration.png" alt="Why Paid Search Costs Are Rising for Car Dealers in 2026" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Paid Search</span>
+            <span class="text-xs text-gray-500">2026-01-15</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Why Paid Search Costs Are Rising for Car Dealers in 2026</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">If your dealership's Google Ads budget feels like it's buying less this year—fewer calls, fewer form leads, fewer 'real' shoppers—you're not imagining it. Here's what's driving costs up and what you can do about it.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Google Ads</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">PPC</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Paid Search</span></div>
+        </div>
+      </a>
+      <a href="/blog/what-the-2025-kerrigan-dealer-survey-means-for-your-digital-marketing-strategy" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/dealer_survey_data_visualization.png" alt="What the 2025 Kerrigan Dealer Survey Means for Your Digital Marketing Strategy" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Industry Research</span>
+            <span class="text-xs text-gray-500">2026-01-06</span>
+            <span class="text-xs text-gray-500">6 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">What the 2025 Kerrigan Dealer Survey Means for Your Digital Marketing Strategy</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">The 2025 Kerrigan Dealer Survey reveals critical intelligence for dealerships—from AI adoption hitting 90% to used vehicle strategy shifts. Here's what it means for your 2026 digital marketing.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Industry Research</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Dealer Survey</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span></div>
+        </div>
+      </a>
+      <a href="/blog/how-ai-optimized-websites-help-dealers-do-more-with-less" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/ai_automotive_dealership_network.png" alt="How AI-Optimized Websites Help Dealers Do More With Less" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Industry Research</span>
+            <span class="text-xs text-gray-500">2026-01-05</span>
+            <span class="text-xs text-gray-500">12 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">How AI-Optimized Websites Help Dealers Do More With Less</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">According to the 2025 Kerrigan Dealer Survey, 90% of dealers are using or planning to use AI in their operations. This case study examines how forward-thinking dealers are using AI-optimized websites and GEO to increase qualified traffic while reducing cost-per-lead.</p>
+          <div class="flex gap-2 mt-3"></div>
+        </div>
+      </a>
+      <a href="/blog/the-data-is-in-your-dealer-website-is-probably-costing-you-sales" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/website_data_research_visualization.png" alt="The Data Is In: Your Dealer Website Is Probably Costing You Sales" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Industry Research</span>
+            <span class="text-xs text-gray-500">2026-01-05</span>
+            <span class="text-xs text-gray-500">9 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">The Data Is In: Your Dealer Website Is Probably Costing You Sales</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">New industry research from 80 million leads confirms what we've been seeing—and it's worse than most dealers realize. Here's what the Shift Digital 2025 Pulse Report reveals about website performance, mobile optimization, and lead quality.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Performance</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Core Web Vitals</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Mobile</span></div>
+        </div>
+      </a>
+      <a href="/blog/why-savvy-dealer-outperforms-the-competition" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/competitive_advantage_visualization.png" alt="Why Savvy Dealer Outperforms the Competition" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Company News</span>
+            <span class="text-xs text-gray-500">2026-01-05</span>
+            <span class="text-xs text-gray-500">7 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Why Savvy Dealer Outperforms the Competition</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Real data. Real results. No excuses. Here's what makes Savvy Dealer different—backed by numbers, not marketing fluff.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Savvy Dealer</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Performance</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">GEO</span></div>
+        </div>
+      </a>
+      <a href="/blog/impressions-up-leads-flat-dealer-kpi-reset-2026" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/marketing_kpi_dashboard_visualization.png" alt="Impressions Up, Leads Flat? The Dealer KPI Reset for Google's AI Search (2026)" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2026-01-02</span>
+            <span class="text-xs text-gray-500">8 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Impressions Up, Leads Flat? The Dealer KPI Reset for Google's AI Search (2026)</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">If your impressions are up but leads are flat, you're not imagining it. Google is answering more questions on the search results page using AI—and that changes what 'good performance' looks like for dealers in 2026.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">KPIs</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI Search</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Google</span></div>
+        </div>
+      </a>
+      <a href="/blog/how-ai-search-engines-rank-your-dealership" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/ai_search_ranking_visualization.png" alt="How AI Search Engines Rank Your Dealership: What New Perplexity Research Reveals" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2025-12-31</span>
+            <span class="text-xs text-gray-500">10 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">How AI Search Engines Rank Your Dealership: What New Perplexity Research Reveals</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Independent research into Perplexity's ranking systems reveals exactly how AI search engines evaluate dealership content. Keyword stuffing is officially dead—here's what matters now.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI Search</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">GEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Perplexity</span></div>
+        </div>
+      </a>
+      <a href="/blog/your-website-speaks-two-languages-is-it-fluent-in-both" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/website_dual_language_concept.png" alt="Your Website Speaks Two Languages — Is It Fluent in Both?" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2025-12-30</span>
+            <span class="text-xs text-gray-500">8 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Your Website Speaks Two Languages — Is It Fluent in Both?</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Why the code behind your dealership website matters more than ever in the age of AI search. Most dealership websites were built to impress humans, not inform machines — and increasingly, the machines are deciding whether customers ever see you at all.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Structured Data</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">JSON-LD</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI Search</span></div>
+        </div>
+      </a>
+      <a href="/blog/your-next-customer-might-not-visit-your-website-their-ai-will" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/ai_browser_analyzing_dealership.png" alt="Your Next Customer Might Not Visit Your Website. Their AI Will." class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">AI & Technology</span>
+            <span class="text-xs text-gray-500">2025-12-22</span>
+            <span class="text-xs text-gray-500">12 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Your Next Customer Might Not Visit Your Website. Their AI Will.</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Anthropic just launched Claude for Chrome — an AI assistant that lives inside your browser, watches what you're doing, and takes action on your behalf. This isn't a future prediction. It's happening now. And if you run a dealership, it's going to change how customers find you.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Claude</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Anthropic</span></div>
+        </div>
+      </a>
+      <a href="/blog/googles-ai-browser-changes-everything-what-car-dealers-need-to-know" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/ai_browser_neural_network.png" alt="Google's AI Browser Changes Everything: What Car Dealers Need to Know Right Now" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">AI & Technology</span>
+            <span class="text-xs text-gray-500">2025-12-15</span>
+            <span class="text-xs text-gray-500">10 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Google's AI Browser Changes Everything: What Car Dealers Need to Know Right Now</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Google's experimental AI browser—codenamed 'Disco'—isn't just another tech announcement. It's a preview of how people will shop for cars within the next one to three years. Here's what's changing, why it matters, and what you need to do about it.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Google</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">GEO</span></div>
+        </div>
+      </a>
+      <a href="/blog/how-ai-is-introducing-new-instability-to-the-internet" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/internet_infrastructure_stress_visualization.png" alt="How AI Is Introducing New Instability to the Internet" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">AI & Technology</span>
+            <span class="text-xs text-gray-500">2025-12-15</span>
+            <span class="text-xs text-gray-500">6 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">How AI Is Introducing New Instability to the Internet</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">AI is placing unprecedented strain on the infrastructure that powers the internet. Recent outages and service disruptions are early warning signs of a deeper issue—the internet was never designed to handle the scale, speed, and behavior of AI-driven systems.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Infrastructure</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Technology</span></div>
+        </div>
+      </a>
+      <a href="/blog/google-december-2025-core-update-what-car-dealers-need-to-know" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/google_core_update_visualization.png" alt="Google's December 2025 Core Update: What Car Dealers Need to Know Right Now" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">SEO</span>
+            <span class="text-xs text-gray-500">2025-12-12</span>
+            <span class="text-xs text-gray-500">8 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Google's December 2025 Core Update: What Car Dealers Need to Know Right Now</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Google just dropped another broad core update on December 11, 2025. If your dealership website traffic starts bouncing around over the next few weeks, this is probably why. Here's what's happening and what you should do about it.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Google Updates</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Content Strategy</span></div>
+        </div>
+      </a>
+      <a href="/blog/the-yahoo-problem-why-whitelisting-ai-bots-is-a-losing-strategy" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/AI_dead_zone_concept_cf611237.png" alt="The Yahoo Problem: Why Whitelisting AI Bots Is a Losing Strategy for Auto Dealers" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2025-12-02</span>
+            <span class="text-xs text-gray-500">12 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">The Yahoo Problem: Why Whitelisting AI Bots Is a Losing Strategy for Auto Dealers</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Automotive website providers are making the same mistake Yahoo made in 1994. History is about to repeat itself—and dealers who don't adapt will be left behind.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Digital Marketing</span></div>
+        </div>
+      </a>
+      <a href="/blog/we-tested-50-independent-dealer-websites" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <div class="w-full h-48 bg-gray-200 rounded-t-xl"></div>
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Website Performance</span>
+            <span class="text-xs text-gray-500">2025-11-21</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">We Tested 50 Independent Dealer Websites. Less Than Half Passed Google's Standards.</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">The data reveals why so many independent dealers struggle to compete online—and it has nothing to do with budget.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Performance</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Core Web Vitals</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span></div>
+        </div>
+      </a>
+      <a href="/blog/the-shift-from-seo-to-geo" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/seo_to_geo_transition.png" alt="The Shift From SEO to GEO: The New Search Battle Dealers Can't Ignore" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2025-11-18</span>
+            <span class="text-xs text-gray-500">6 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">The Shift From SEO to GEO: The New Search Battle Dealers Can't Ignore</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">SEO alone won't protect dealers from a world where AI answers shopper questions before they ever reach your site. GEO is the new standard, and the gap between dealers prepared for it and those who aren't is widening quickly.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">GEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span></div>
+        </div>
+      </a>
+      <a href="/blog/visit-us-at-nada-2026-booth-6760n" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/NADA2026_SavvyDealer_Booth6760N_ext_black_1762695345140.png" alt="Why Visit Us at NADA? Two Big Reasons (and one of them's hush-hush)" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Events</span>
+            <span class="text-xs text-gray-500">2025-11-17</span>
+            <span class="text-xs text-gray-500">6 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Why Visit Us at NADA? Two Big Reasons (and one of them's hush-hush)</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Dealers are busy. NADA is busy. If you're going to carve out 15 minutes on the floor, it has to be worth it. See our lightning-fast dealer website platform and get an exclusive preview of the anti-dashboard.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">NADA</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Platform</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Anti-Dashboard</span></div>
+        </div>
+      </a>
+      <a href="/blog/where-your-vehicle-ads-budget-goes-to-die" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/Budget_waste_drain_concept_f19939b5.png" alt="Where Your Vehicle Ads Budget Goes to Die - And How Savvy Dealer Stops the Leak" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">PPC</span>
+            <span class="text-xs text-gray-500">2025-11-17</span>
+            <span class="text-xs text-gray-500">8 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Where Your Vehicle Ads Budget Goes to Die - And How Savvy Dealer Stops the Leak</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">If you're running Google Vehicle Ads (VLAs) through Performance Max, a chunk of your spend is likely paying for clicks that don't move metal. Here's why it happens - and how our Free Waste Audit shows you exactly where the leaks are.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Google Ads</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Vehicle Ads</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">PPC</span></div>
+        </div>
+      </a>
+      <a href="/blog/how-dealers-should-evaluate-marketing-roi-and-agencies-12-practical-moves" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/how Dealers Should Evaluate_1762984180908.jpg" alt="How Dealers Should Evaluate Marketing ROI and Agencies: 12 Practical Moves" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Marketing Strategy</span>
+            <span class="text-xs text-gray-500">2025-10-15</span>
+            <span class="text-xs text-gray-500">7 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">How Dealers Should Evaluate Marketing ROI and Agencies: 12 Practical Moves</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Focus your spend on shoppers who are ready right now, validate it with simple, human-readable metrics (time on site, pages viewed, funnel progression), and tie every campaign to calls and conversations - not vanity conversions.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Marketing</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">ROI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Analytics</span></div>
+        </div>
+      </a>
+      <a href="/blog/pop-ups-on-dealer-websites-do-they-help-or-hurt-2025" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/Website_popup_frustration_mobile_b40fa9a2.png" alt="Pop-ups on Dealer Websites: Do They Help or Hurt? (2025)" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">SEO</span>
+            <span class="text-xs text-gray-500">2025-09-25</span>
+            <span class="text-xs text-gray-500">7 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Pop-ups on Dealer Websites: Do They Help or Hurt? (2025)</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Most shoppers don't want pop-ups, especially on phones. They interrupt the task (price, payments, call/text, directions) and feel pushy. Google explicitly says to avoid intrusive interstitials.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">UX</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Website Performance</span></div>
+        </div>
+      </a>
+      <a href="/blog/auto-market-insights-september-24th-2025" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/Auto_market_insights_dashboard_62f91089.png" alt="Auto Market Insights: September 24th, 2025" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Market Insights</span>
+            <span class="text-xs text-gray-500">2025-09-24</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Auto Market Insights: September 24th, 2025</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">The auto market is in a period of seasonal adjustment as we head into the final quarter of 2025. Inventory levels are stabilizing, but demand remains cautious.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Market Trends</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Inventory Management</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">EV</span></div>
+        </div>
+      </a>
+      <a href="/blog/auto-market-insights-september-15th-2025" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/Auto_market_insights_September_0170d578.png" alt="Auto Market Insights: September 15th, 2025" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Market Insights</span>
+            <span class="text-xs text-gray-500">2025-09-15</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Auto Market Insights: September 15th, 2025</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">The automotive market is navigating a period of significant change, marked by evolving demand patterns, shifting lending landscapes, and persistent inflation pressures.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Market Trends</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Economics</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Finance</span></div>
+        </div>
+      </a>
+      <a href="/blog/are-you-accidentally-blocking-your-future-customers-the-ai-dead-zone-problem" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/AI_dead_zone_concept_cf611237.png" alt="Are You Accidentally Blocking Your Future Customers? The AI Dead Zone Problem" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Digital Strategy</span>
+            <span class="text-xs text-gray-500">2025-09-10</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Are You Accidentally Blocking Your Future Customers? The AI Dead Zone Problem</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Most car shoppers are now using AI assistants like ChatGPT and Claude to research dealerships and inventory. But many dealer websites are invisible to these tools, creating an AI dead zone that's costing you customers.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">AI</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">SEO</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Digital Marketing</span></div>
+        </div>
+      </a>
+      <a href="/blog/will-fords-separating-of-the-ev-business-be-cancer-for-ford-dealers" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        <img src="/images/Ford_EV_business_split_86c8437f.png" alt="Will Ford's Separating of the EV Business Be Cancer for Ford Dealers?" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">
+        <div class="p-5">
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Industry Analysis</span>
+            <span class="text-xs text-gray-500">2025-09-05</span>
+            <span class="text-xs text-gray-500">5 min read</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">Will Ford's Separating of the EV Business Be Cancer for Ford Dealers?</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">Ford's decision to separate its EV business from franchised dealers creates uncertainty around customer relationships, service revenue, and dealer investments in EV infrastructure.</p>
+          <div class="flex gap-2 mt-3"><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">EV</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Industry News</span><span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">Dealer Strategy</span></div>
+        </div>
+      </a>
+        </div>
+      </div>
+    </section>
+  <section class="cta-bg text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Dominate Your Market?</h2>
+      <p class="text-lg text-blue-100 mb-8">Join successful dealers who choose performance over promises</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Request Free Audit</a>
+        <a href="tel:8135013229" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition">Call Now: (813) 501-3229</a>
+      </div>
+    </div>
+  </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div>
+          <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10 mb-4 brightness-200">
+          <p class="text-sm text-gray-400 mb-4">Digital marketing for auto dealers. We don't outspend the competition - we outsmart them.</p>
+          <div class="flex gap-3">
+            <a href="https://www.facebook.com/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/company/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Products</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/fully-managed-marketing" class="hover:text-white">Fully Managed Marketing</a></li>
+            <li><a href="/facebook-ads" class="hover:text-white">Facebook Ads</a></li>
+            <li><a href="/ppc-ads" class="hover:text-white">PPC Ads</a></li>
+            <li><a href="/dealer-seo" class="hover:text-white">Dealer SEO + GEO</a></li>
+            <li><a href="/dealer-websites" class="hover:text-white">Dealer Websites</a></li>
+            <li><a href="/independent-dealer-websites" class="hover:text-white">Independent Dealer Websites</a></li>
+            <li><a href="/vehicle-ads" class="hover:text-white">Vehicle Ads</a></li>
+            <li><a href="/anti-dashboard" class="hover:text-white">Anti-Dashboard AI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Company</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="/about" class="hover:text-white">About</a></li>
+            <li><a href="/blog" class="hover:text-white">Blog</a></li>
+            <li><a href="/case-studies" class="hover:text-white">Case Studies</a></li>
+            <li><a href="/resources" class="hover:text-white">Resources</a></li>
+            <li><a href="/book" class="hover:text-white">Book a Demo</a></li>
+            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
+            <li><a href="/end-user-agreement" class="hover:text-white">End User Agreement</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-white font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-sm">
+            <li><a href="tel:8135013229" class="hover:text-white">(813) 501-3229</a></li>
+            <li><a href="mailto:support@savvydealer.com" class="hover:text-white">support@savvydealer.com</a></li>
+            <li class="text-gray-400">2705 Wilson Rd, Land O Lakes, FL 34638</li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+        <p>&copy; 2024-2026 Savvy Dealer. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+    <!-- Lead Form Modal -->
+  <div id="lead-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
+    <div class="modal-overlay absolute inset-0 bg-black/50"></div>
+    <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 z-10">
+      <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+      <p class="text-gray-600 mb-6">Fill out the form below and we'll be in touch shortly.</p>
+      <form data-ajax action="/api/lead-form">
+        <div class="space-y-4">
+          <div>
+            <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+            <input type="text" id="modal-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email" id="modal-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+            <input type="tel" id="modal-phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label>
+            <input type="text" id="modal-dealership" name="dealership" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+          </div>
+          <div>
+            <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+            <textarea id="modal-message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+          </div>
+        </div>
+        <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Send Message</button>
+      </form>
+    </div>
+  </div>
+  <script src="/js/nav.js"></script>
+  <script src="/js/forms.js"></script>
+  <script src="/js/lead-modal.js"></script>
+</body>
+</html>

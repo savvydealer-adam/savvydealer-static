@@ -1,0 +1,12 @@
+{
+  "name": "savvydealer-static",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js",
+    "generate": "python generate.py"
+  },
+  "dependencies": {
+    "compression": "^1.8.1",
+    "express": "^4.21.0"
+  }
+}

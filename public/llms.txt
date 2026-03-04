@@ -1,0 +1,60 @@
+# Savvy Dealer - Digital Marketing for Automotive Dealerships
+
+> Savvy Dealer is an expert digital marketing agency specializing in automotive dealership marketing. We don't outspend the competition - we outsmart them.
+
+## Company Info
+- Name: Savvy Dealer
+- Website: https://www.savvydealer.com
+- Phone: (813) 501-3229
+- Email: support@savvydealer.com
+- Address: 2705 Wilson Rd, Land O Lakes, FL 34638
+- Founded: 2020
+- Service Area: United States
+
+## Services
+- Fully Managed Marketing: Complete automotive marketing solution with co-op management, vendor coordination, website, SEO, SEM, Facebook ads, design, and ROI tracking
+- Facebook Ads: Hand-built, high-performing Facebook ads targeting current dealer inventory starting at $300/month
+- Dealer SEO + GEO: Combined SEO and Generative Engine Optimization for visibility in Google AND AI-powered search (ChatGPT, Perplexity, Gemini)
+- PPC Ads: 90% search term-to-keyword match with exclusive market control and competitor keyword intelligence
+- Vehicle Ads (VLA): Expert Performance Max management that eliminates budget waste on Google's Display Network
+- Dealer Websites: AI-optimized, SEO-first websites with lightning-fast load times meeting Core Web Vitals
+- Independent Dealer Websites: Mobile-first websites for independent and BHPH dealers with SEO and GEO built in
+- Anti-Dashboard AI: AI-powered attribution and analytics (coming soon)
+
+## Key Differentiators
+- Market exclusivity: No competing dealers in the same market
+- Transparent reporting and clear attribution
+- Hand-built campaigns, not AI-generated
+- 90% search term-to-keyword match for PPC
+- Combined SEO + GEO strategy for traditional and AI search
+- Bi-weekly optimization cadence
+
+## Team
+- Adam Gillrie, Director
+- Nick Chivinski, VP of Sales
+- David Frost, CTO
+- Emily Shultz, Head of Operations
+- Lucas Terwilliger, Strategist
+
+## Case Study Results
+- Banner Chevrolet: +838% verified users YoY, +340% VDP views, <1.5s mobile LCP, -25% media spend
+- Brighton Ford: +47% conversions, +62% quality traffic, +38% paid media efficiency
+- Lake Powell Ford & Alamo Ford: +68% lead volume, -32% cost per lead, +44% appointment rate
+
+## Pages
+- /: Home
+- /about: About us
+- /products: All products overview
+- /fully-managed-marketing: Fully managed marketing service
+- /facebook-ads: Facebook advertising for dealers
+- /dealer-seo: SEO + GEO strategy
+- /ppc-ads: PPC & SEM advertising
+- /vehicle-ads: Vehicle listing ads management
+- /dealer-websites: AI-optimized dealer websites
+- /independent-dealer-websites: Independent dealer websites
+- /anti-dashboard: Anti-Dashboard AI (coming soon)
+- /resources: Marketing guides and playbooks
+- /blog: Industry insights and articles
+- /case-studies: Client success stories
+- /book: Request a free audit
+- /visibility-audit: Free AI visibility audit tool

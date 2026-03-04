@@ -1,0 +1,43 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app:$COMMIT_SHA'
+      - '-t'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app:latest'
+      - '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - '--all-tags'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app'
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'savvydealer-website'
+      - '--image'
+      - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--set-secrets'
+      - 'RESEND_API_KEY=RESEND_API_KEY:latest,RECAPTCHA_SECRET_KEY=RECAPTCHA_SECRET_KEY:latest,FORM_TOKEN_SECRET=FORM_TOKEN_SECRET:latest'
+      - '--set-env-vars'
+      - 'RECAPTCHA_SITE_KEY=${_RECAPTCHA_SITE_KEY},FROM_EMAIL=contact@savvydealer.ai,TO_EMAIL=support@savvydealer.com'
+
+images:
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app:$COMMIT_SHA'
+  - 'us-central1-docker.pkg.dev/$PROJECT_ID/savvydealer-website/app:latest'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _RECAPTCHA_SITE_KEY: ''
