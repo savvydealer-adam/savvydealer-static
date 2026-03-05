@@ -17,18 +17,22 @@ def _guide_page(slug, title, desc, badge, read_time, updated, body_html,
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Resources", "/resources"), (title[:50] + "..." if len(title) > 50 else title, None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">{badge}</span>
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-4">{title}</h1>
-        <p class="text-lg text-blue-200 mb-4">{desc}</p>
-        <div class="flex items-center justify-center gap-4 text-sm text-blue-300">
-          <span>{read_time}</span>
-          <span>Updated: {updated}</span>
+    <section class="relative flex min-h-[50vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">{badge}</span>
+          </div>
+          <h1 class="font-serif text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">{title}</h1>
+          <p class="text-lg text-white/80">{desc}</p>
+          <div class="flex items-center justify-center gap-4 text-sm text-white/60">
+            <span>{read_time}</span>
+            <span>Updated: {updated}</span>
+          </div>
         </div>
       </div>
     </section>
-    <article class="py-16 px-4">
+    <article class="py-24 px-6 sm:px-8 lg:px-12">
       <div class="max-w-3xl mx-auto">
 {body_html}
       </div>
@@ -97,7 +101,7 @@ def _stats_row(stats):
     """Stats as colored cards."""
     cards = ""
     for stat, label in stats:
-        cards += f'<div class="text-center bg-blue-50 rounded-lg p-4"><div class="text-2xl font-bold text-blue-600">{stat}</div><div class="text-sm text-gray-600 mt-1">{label}</div></div>'
+        cards += f'<div class="text-center bg-gray-50 rounded-xl p-6 border border-gray-200"><div class="font-serif text-2xl font-bold text-[#0088ff]">{stat}</div><div class="text-sm text-gray-500 mt-1">{label}</div></div>'
     return f'        <div class="grid md:grid-cols-{len(stats)} gap-4 my-6">{cards}</div>'
 
 

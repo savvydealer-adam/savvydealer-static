@@ -1,48 +1,56 @@
 """Page generators for all static pages."""
 from generate import (
     head, nav, footer, breadcrumb, cta_section, faq_section, org_schema,
-    write_page, PHONE, PHONE_HREF, EMAIL, DOMAIN
+    write_page, PHONE, PHONE_HREF, EMAIL, DOMAIN, COLORS
 )
 
 # ---------------------------------------------------------------------------
-# Service page template
+# Service page template (matches live site ProductPage.tsx)
 # ---------------------------------------------------------------------------
 
 def service_page(filename, data):
     """Generate a service/product page from a data dict."""
     d = data
-    accent = d.get("accent_color", "#2563eb")
+    accent = d.get("accent_color", "#0088ff")
     faqs = [(q["question"], q["answer"]) for q in d.get("faqs", [])]
+    hero_img = d.get("hero_image", "")
+    hero_img_webp = d.get("hero_image_webp", "")
 
     # Benefits list
     benefits_html = ""
     for b in d.get("benefits", {}).get("items", []):
-        benefits_html += f'          <li class="flex items-start gap-3"><svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>{b}</span></li>\n'
+        benefits_html += f'''          <li class="flex items-start gap-3">
+            <svg class="h-6 w-6 shrink-0" style="color:{accent}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span class="text-gray-500">{b}</span>
+          </li>\n'''
 
     # Features grid
     features_html = ""
     for f in d.get("features", {}).get("items", []):
-        features_html += f'''        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">{f["title"]}</h3>
-          <p class="text-gray-600 text-sm">{f["description"]}</p>
+        features_html += f'''        <div class="rounded-xl border border-gray-200 bg-gray-50 p-6">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg" style="background-color:{accent}20;color:{accent}">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="text-xl font-bold mb-2">{f["title"]}</h3>
+          <p class="text-gray-500">{f["description"]}</p>
         </div>\n'''
 
     # Stats
     stats_html = ""
     for s in d.get("proof_stats", {}).get("items", []):
-        stats_html += f'''        <div class="text-center">
-          <div class="text-3xl font-bold text-blue-600">{s["stat"]}</div>
-          <div class="text-sm text-gray-600 mt-1">{s["label"]}</div>
+        stats_html += f'''        <div class="rounded-xl border border-gray-200 bg-gray-50 p-6 text-center">
+          <div class="font-serif text-4xl font-bold mb-2" style="color:{accent}">{s["stat"]}</div>
+          <div class="text-sm text-gray-500">{s["label"]}</div>
         </div>\n'''
 
     # Process steps
     process_html = ""
     for s in d.get("process", {}).get("steps", []):
-        process_html += f'''        <div class="flex gap-4">
-          <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shrink-0">{s["number"]}</div>
+        process_html += f'''        <div class="flex gap-6">
+          <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg font-serif text-2xl font-bold text-white" style="background-color:{accent}">{s["number"]}</div>
           <div>
-            <h3 class="font-semibold text-gray-900">{s["title"]}</h3>
-            <p class="text-gray-600 text-sm mt-1">{s["description"]}</p>
+            <h3 class="text-xl font-bold mb-2">{s["title"]}</h3>
+            <p class="text-gray-500">{s["description"]}</p>
           </div>
         </div>\n'''
 
@@ -50,58 +58,93 @@ def service_page(filename, data):
     seo_desc = d.get("seo_meta_description", d.get("hero_description", ""))
     canonical = filename.replace(".html", "")
 
+    # Hero image HTML
+    hero_section = ""
+    if hero_img:
+        hero_section = f'''
+    <!-- Hero -->
+    <section class="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12">
+      <picture class="absolute inset-0 z-0">
+        {f'<source srcset="{hero_img_webp}" type="image/webp">' if hero_img_webp else ''}
+        <img src="{hero_img}" alt="{d["title"]}" class="h-full w-full object-cover" loading="eager" fetchpriority="high">
+      </picture>
+      <div class="absolute inset-0 z-0" style="background:linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5))"></div>
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-5xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">{d.get("badge", "")}</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">{d["title"]}</h1>
+          <p class="mx-auto max-w-3xl text-xl text-white/90 sm:text-2xl">{d["subtitle"]}</p>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">{d.get("hero_description", "")}</p>
+          <div class="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row sm:gap-6">
+            <a href="/book" class="inline-flex items-center justify-center min-h-[56px] w-full sm:w-auto rounded-full bg-white/95 px-10 text-base font-semibold text-[#0088ff] backdrop-blur-sm hover:bg-white transition">Request Free Audit</a>
+            <a href="tel:{PHONE_HREF}" class="inline-flex items-center justify-center min-h-[56px] w-full sm:w-auto rounded-full border border-white/20 bg-white/10 px-10 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20 transition">Call {PHONE}</a>
+          </div>
+        </div>
+      </div>
+    </section>'''
+    else:
+        hero_section = f'''
+    <!-- Hero -->
+    <section class="relative flex min-h-[85vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, {accent} 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-5xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">{d.get("badge", "")}</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">{d["title"]}</h1>
+          <p class="mx-auto max-w-3xl text-xl text-white/90 sm:text-2xl">{d["subtitle"]}</p>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">{d.get("hero_description", "")}</p>
+          <div class="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row sm:gap-6">
+            <a href="/book" class="inline-flex items-center justify-center min-h-[56px] w-full sm:w-auto rounded-full bg-white/95 px-10 text-base font-semibold text-[#0088ff] backdrop-blur-sm hover:bg-white transition">Request Free Audit</a>
+            <a href="tel:{PHONE_HREF}" class="inline-flex items-center justify-center min-h-[56px] w-full sm:w-auto rounded-full border border-white/20 bg-white/10 px-10 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20 transition">Call {PHONE}</a>
+          </div>
+        </div>
+      </div>
+    </section>'''
+
     content = f'''{head(seo_title, seo_desc, canonical)}
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Products", "/products"), (d["title"], None)])}
-
-    <!-- Hero -->
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-3 py-1 rounded-full mb-4">{d.get("badge", "")}</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{d["title"]}</h1>
-        <p class="text-xl text-blue-100 mb-4">{d["subtitle"]}</p>
-        <p class="text-blue-200 max-w-3xl mb-8">{d.get("hero_description", "")}</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Request Free Audit</a>
-          <a href="tel:{PHONE_HREF}" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition">Call {PHONE}</a>
-        </div>
-      </div>
-    </section>
+{hero_section}
 
     <!-- Benefits -->
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">{d.get("benefits", {}).get("title", "Why Choose Us")}</h2>
-        <ul class="grid md:grid-cols-2 gap-4">
+    <section class="py-24">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-12 text-center">{d.get("benefits", {}).get("title", "Why Choose Us")}</h2>
+        <ul class="grid gap-4 md:grid-cols-2">
 {benefits_html}        </ul>
       </div>
     </section>
 
     <!-- Features -->
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 mb-4">{d.get("features", {}).get("title", "Features")}</h2>
-        <p class="text-gray-600 mb-8 max-w-3xl">{d.get("features", {}).get("description", "")}</p>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="bg-gray-50 py-24">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="mb-12 text-center">
+          <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">{d.get("features", {}).get("title", "Features")}</h2>
+          <p class="mx-auto max-w-2xl text-lg text-gray-500">{d.get("features", {}).get("description", "")}</p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 {features_html}        </div>
       </div>
     </section>
 
     <!-- Stats -->
-    <section class="py-16 px-4">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-8">{d.get("proof_stats", {}).get("title", "By The Numbers")}</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <section class="py-24">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center mb-12">{d.get("proof_stats", {}).get("title", "By The Numbers")}</h2>
+        <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 {stats_html}        </div>
       </div>
     </section>
 
     <!-- Process -->
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold text-gray-900 mb-8">{d.get("process", {}).get("title", "Our Process")}</h2>
-        <div class="space-y-6">
+    <section class="bg-gray-50 py-24">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-12 text-center">{d.get("process", {}).get("title", "Our Process")}</h2>
+        <div class="mx-auto max-w-4xl space-y-8">
 {process_html}        </div>
       </div>
     </section>
@@ -487,57 +530,154 @@ SERVICE_PAGES = {
 # ---------------------------------------------------------------------------
 
 def generate_home():
+    # Products for alternating grid (matches Home.tsx features section)
+    products = [
+        ("Fully Managed Marketing", "Complete Marketing Solution", "White-glove service that handles everything - co-op management, vendor coordination, website, SEO, SEM, Facebook ads, design, and ROI tracking.", "/fully-managed-marketing", "#FF6B35", "Fully_managed_marketing_orange_theme_c07bcc36", "Sparkles"),
+        ("Dealer Websites", "AI-Optimized Dealer Websites", "SEO-first website architecture with lightning-fast load times, meeting Core Web Vitals and built for both human visitors and AI crawlers.", "/dealer-websites", "#0088FF", "Dealer_Websites_blue_theme_2aaf45c2", "Globe"),
+        ("Dealer SEO + GEO", "Search + AI Optimization", "Combined SEO and Generative Engine Optimization for visibility in Google AND AI-powered search like ChatGPT, Perplexity, and Gemini.", "/dealer-seo", "#00E676", "SEO_green_theme_1cae63d8", "Search"),
+        ("Facebook Ads", "Social Media Advertising", "Hand-built, high-performing Facebook ads targeting current dealer inventory. Starting at $300/month.", "/facebook-ads", "#FF4081", "Facebook_Ads_pink_theme_3fd45300", "Facebook"),
+        ("PPC Ads", "Pay-Per-Click Advertising", "90% search term-to-keyword match with exclusive market control and competitor keyword intelligence.", "/ppc-ads", "#FF6B35", "PPC_Ads_orange_theme_7bcb5a76", "TrendingUp"),
+        ("Vehicle Ads", "Vehicle Listing Ads", "Expert Performance Max management that eliminates budget waste on Google's Display Network.", "/vehicle-ads", "#00D4D4", "Vehicle_Ads_teal_theme_1273b0d6", "Car"),
+    ]
+
+    products_html = ""
+    for i, (name, badge, desc, url, color, img_base, icon) in enumerate(products):
+        is_reversed = i % 2 == 1
+        order_img = "order-1 lg:order-2" if not is_reversed else "order-1 lg:order-1"
+        order_text = "order-2 lg:order-1" if not is_reversed else "order-2 lg:order-2"
+
+        products_html += f'''
+    <section class="py-24">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="{order_text}">
+            <div class="inline-flex items-center gap-3 rounded-full border border-gray-200 px-4 py-2 mb-6">
+              <span class="text-sm font-semibold uppercase tracking-wide text-gray-500">{badge}</span>
+            </div>
+            <h2 class="font-serif text-4xl font-bold leading-tight sm:text-5xl mb-6">{name}</h2>
+            <p class="text-lg sm:text-xl text-gray-500 mb-8">{desc}</p>
+            <div class="flex flex-col gap-4 pt-4 sm:flex-row sm:gap-6">
+              <a href="{url}" class="inline-flex items-center justify-center min-h-[48px] rounded-full px-8 bg-[#0088ff] text-white font-semibold hover:bg-[#0077e6] transition">Learn More</a>
+              <a href="/book" class="inline-flex items-center justify-center min-h-[48px] rounded-full px-8 border border-gray-200 text-gray-900 font-semibold hover:bg-gray-50 transition">Request Audit</a>
+            </div>
+          </div>
+          <div class="{order_img}">
+            <div class="relative overflow-hidden rounded-3xl">
+              <picture>
+                <source srcset="/images/{img_base}-640w.webp" type="image/webp">
+                <img src="/images/{img_base}.png" alt="{name}" class="h-full w-full object-cover" loading="lazy">
+              </picture>
+              <div class="absolute inset-0" style="background:linear-gradient(135deg, {color} 0%, transparent 100%);opacity:0.1"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>\n'''
+
     content = f'''{head("Savvy Dealer - Digital Marketing for Automotive Dealerships", "Expert digital marketing for car dealerships. Facebook Ads, PPC, SEO/GEO optimization, and AI-powered dealer websites. We don't outspend the competition - we outsmart them.", "")}
 {nav()}
   <main class="flex-1">
     <!-- Hero -->
-    <section class="hero-bg text-white py-24 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Digital Marketing for Auto Dealers</span>
-        <h1 class="text-4xl md:text-6xl font-extrabold mb-6">The Savvy Dealer Difference</h1>
-        <p class="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">We partner with dealers who know that <strong>leads aren't created - they're captured.</strong></p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition text-lg">Request Free Audit</a>
-          <a href="tel:{PHONE_HREF}" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition text-lg">Call {PHONE}</a>
+    <section class="relative flex min-h-screen items-center justify-center overflow-hidden">
+      <picture class="absolute inset-0 z-0">
+        <source srcset="/images/Automotive_dealership_hero_image_d17995ec-640w.webp" type="image/webp">
+        <img src="/images/Automotive_dealership_hero_image_d17995ec.png" alt="Automotive dealership" class="h-full w-full object-cover" loading="eager" fetchpriority="high">
+      </picture>
+      <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
+      <div class="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center sm:px-8 lg:px-12">
+        <div class="mx-auto max-w-5xl space-y-10">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+            <span class="font-medium text-white">Digital Marketing for Auto Dealers</span>
+          </div>
+          <h1 class="font-serif text-6xl font-bold leading-[1.1] tracking-tight text-white sm:text-7xl lg:text-8xl">The Savvy Dealer<br>Difference</h1>
+          <p class="mx-auto max-w-3xl text-xl text-white/90 sm:text-2xl">We partner with dealers who know that <strong class="text-white">leads aren't created - they're captured.</strong></p>
+          <div class="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row sm:gap-6">
+            <a href="/book" class="inline-flex items-center gap-2 min-h-[56px] w-full sm:w-auto rounded-full bg-white/95 px-10 text-base font-semibold text-[#0088ff] backdrop-blur-sm hover:bg-white transition">
+              Request Free Audit
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+            <a href="tel:{PHONE_HREF}" class="inline-flex items-center justify-center min-h-[56px] w-full sm:w-auto rounded-full border border-white/20 bg-white/10 px-10 text-base font-semibold text-white backdrop-blur-sm hover:bg-white/20 transition">Call {PHONE}</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About / How We Drive Sales -->
-    <section class="py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">How We Drive Your Sales</h2>
-        <p class="text-lg text-gray-600 mb-8 max-w-3xl">By aligning our SEO and GEO (Generative Engine Optimization) strategies, we ensure your dealership doesn't just compete - it <strong>appears first and performs faster</strong> wherever shoppers are searching, from Google to ChatGPT.</p>
-        <div class="grid md:grid-cols-2 gap-4 mb-8">
-          <div class="flex items-start gap-3"><svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Counter competitor tactics effectively</span></div>
-          <div class="flex items-start gap-3"><svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Dominate in search and generative AI results</span></div>
-          <div class="flex items-start gap-3"><svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>AI-optimized websites that convert</span></div>
-          <div class="flex items-start gap-3"><svg class="w-5 h-5 text-green-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span>Transparent reporting you can trust</span></div>
+    <!-- Products Section Header -->
+    <section class="overflow-hidden">
+      <div class="py-32 text-center">
+        <div class="mx-auto max-w-4xl px-6 sm:px-8">
+          <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-6">Our Products</h2>
+          <p class="text-xl sm:text-2xl text-gray-500">Comprehensive marketing solutions built exclusively for automotive dealerships</p>
         </div>
-        <p class="text-lg font-semibold text-gray-900">We don't outspend the competition - <strong>we outsmart them.</strong></p>
+      </div>
+    </section>
+
+    <!-- Product Grid (alternating layout) -->
+{products_html}
+
+    <!-- View All Products -->
+    <section class="pb-24 text-center">
+      <a href="/products" class="inline-flex items-center gap-2 min-h-[48px] rounded-full px-8 border border-gray-200 text-gray-900 font-semibold hover:bg-gray-50 transition">
+        View All Products
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </section>
+
+    <!-- About Section -->
+    <section class="bg-gray-50 py-32">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="grid items-center gap-16 lg:grid-cols-2">
+          <div class="order-2 lg:order-1">
+            <h2 class="font-serif text-4xl font-bold leading-tight sm:text-5xl mb-8">How We Drive Your Sales</h2>
+            <p class="text-xl text-gray-500 mb-8">By aligning our SEO and GEO strategies, we ensure your dealership doesn't just compete - it <strong class="text-gray-900">appears first and performs faster</strong> wherever shoppers are searching.</p>
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start gap-4"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-lg text-gray-500">Counter competitor tactics effectively</span></div>
+              <div class="flex items-start gap-4"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-lg text-gray-500">Dominate in search and generative AI results</span></div>
+              <div class="flex items-start gap-4"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-lg text-gray-500">AI-optimized websites that convert</span></div>
+              <div class="flex items-start gap-4"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-lg text-gray-500">Transparent reporting you can trust</span></div>
+            </div>
+            <p class="text-xl font-semibold mb-8">We don't outspend the competition - <span class="text-[#0088ff]">we outsmart them.</span></p>
+            <a href="/about" class="inline-flex items-center justify-center min-h-[48px] rounded-full px-8 bg-[#0088ff] text-white font-semibold hover:bg-[#0077e6] transition">Learn More About Us</a>
+          </div>
+          <div class="order-1 lg:order-2">
+            <img src="/images/Feature_section_workspace_image_6c209941.png" alt="Savvy Dealer workspace" class="rounded-3xl" loading="lazy">
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 px-4 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-2">What Dealers are Saying</h2>
-        <p class="text-center text-gray-600 mb-12">Consistent performance improvements and trusted partnerships</p>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <p class="text-gray-600 text-sm mb-4">"Savvy Dealer nailed the essentials: a high-performing website, marketing that delivers results, consistent service, and reporting that makes decisions obvious. The outcome is steady, consistent performance improvements across traffic quality, conversions, and paid efficiency."</p>
-            <p class="font-semibold text-gray-900">Josh Mead</p>
-            <p class="text-sm text-gray-500">General Manager, Brighton Ford</p>
+    <section class="py-32">
+      <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div class="mb-20 text-center">
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold mb-4">What Dealers are Saying</h2>
+          <p class="text-xl text-gray-500">Consistent performance improvements and trusted partnerships</p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-xl border border-gray-200 p-8">
+            <p class="text-lg text-gray-500 italic leading-relaxed mb-8">&ldquo;Savvy Dealer nailed the essentials: a high-performing website, marketing that delivers results, consistent service, and reporting that makes decisions obvious. The outcome is steady, consistent performance improvements across traffic quality, conversions, and paid efficiency.&rdquo;</p>
+            <div class="border-t pt-6">
+              <p class="font-semibold text-lg">Josh Mead</p>
+              <p class="text-gray-500">General Manager</p>
+              <p class="font-medium text-[#0088ff]">Brighton Ford</p>
+            </div>
           </div>
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <p class="text-gray-600 text-sm mb-4">"We've been working with Savvy Dealer for over a year, and Savvy Dealer has been a major contributor for Banner Fords success. Our website is faster and converts better, and we see consistent performance improvements across SEO and paid media."</p>
-            <p class="font-semibold text-gray-900">Greg Jones</p>
-            <p class="text-sm text-gray-500">General Manager, Banner Ford</p>
+          <div class="rounded-xl border border-gray-200 p-8">
+            <p class="text-lg text-gray-500 italic leading-relaxed mb-8">&ldquo;We've been working with Savvy Dealer for over a year, and Savvy Dealer has been a major contributor for Banner Fords success. Our website is faster and converts better, and we see consistent performance improvements across SEO and paid media.&rdquo;</p>
+            <div class="border-t pt-6">
+              <p class="font-semibold text-lg">Greg Jones</p>
+              <p class="text-gray-500">General Manager</p>
+              <p class="font-medium text-[#0088ff]">Banner Ford</p>
+            </div>
           </div>
-          <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-            <p class="text-gray-600 text-sm mb-4">"Savvy Dealer is the ideal partner for our dealerships. Month after month we see consistent performance improvements across website conversions, SEO visibility, and paid media. Attribution is clear, budgets are transparent."</p>
-            <p class="font-semibold text-gray-900">David Blake</p>
-            <p class="text-sm text-gray-500">General Manager, Lake Powell Ford and Alamo Ford</p>
+          <div class="rounded-xl border border-gray-200 p-8">
+            <p class="text-lg text-gray-500 italic leading-relaxed mb-8">&ldquo;Savvy Dealer is the ideal partner for our dealerships. Month after month we see consistent performance improvements across website conversions, SEO visibility, and paid media. Attribution is clear, budgets are transparent.&rdquo;</p>
+            <div class="border-t pt-6">
+              <p class="font-semibold text-lg">David Blake</p>
+              <p class="text-gray-500">General Manager</p>
+              <p class="font-medium text-[#0088ff]">Lake Powell Ford &amp; Alamo Ford</p>
+            </div>
           </div>
         </div>
       </div>
@@ -555,52 +695,54 @@ def generate_about():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("About", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">We Don't Outspend the Competition</h1>
-        <p class="text-2xl text-blue-100 mb-4">We Outsmart Them</p>
-        <p class="text-blue-200 max-w-3xl">Savvy Dealer was founded on a simple principle: automotive dealerships deserve digital marketing that actually drives sales, not just impressions. We combine deep industry expertise with data-driven strategies to help dealers win in an increasingly competitive market.</p>
+    <section class="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-5xl space-y-8">
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">We Don't Outspend the Competition</h1>
+          <p class="text-2xl text-white/90 font-semibold">We Outsmart Them</p>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">Savvy Dealer was founded on a simple principle: automotive dealerships deserve digital marketing that actually drives sales, not just impressions. We combine deep industry expertise with data-driven strategies to help dealers win in an increasingly competitive market.</p>
+        </div>
       </div>
     </section>
 
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16">
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Mission</h2>
-          <p class="text-gray-600">To empower automotive dealerships with marketing strategies that focus on ready-to-buy shoppers, transparent ROI metrics, and measurable results. We believe in building backwards from the sale, optimizing for conversations and test drives - not vanity metrics.</p>
+          <h2 class="font-serif text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
+          <p class="text-gray-500 text-lg leading-relaxed">To empower automotive dealerships with marketing strategies that focus on ready-to-buy shoppers, transparent ROI metrics, and measurable results. We believe in building backwards from the sale, optimizing for conversations and test drives - not vanity metrics.</p>
         </div>
         <div>
-          <h2 class="text-2xl font-bold text-gray-900 mb-4">What Sets Us Apart</h2>
-          <ul class="space-y-3">
-            <li class="flex items-start gap-3"><span class="font-semibold text-blue-600">High-intent focus:</span> We target shoppers who are ready now, not "someday"</li>
-            <li class="flex items-start gap-3"><span class="font-semibold text-blue-600">Transparent metrics:</span> Simple, human-readable KPIs that matter</li>
-            <li class="flex items-start gap-3"><span class="font-semibold text-blue-600">Agile execution:</span> Twice-monthly cadence to pivot against competitors</li>
-            <li class="flex items-start gap-3"><span class="font-semibold text-blue-600">Real content:</span> No AI-generated fluff - just substance that ranks</li>
+          <h2 class="font-serif text-3xl font-bold text-gray-900 mb-6">What Sets Us Apart</h2>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3"><span class="font-semibold text-[#0088ff]">High-intent focus:</span> <span class="text-gray-500">We target shoppers who are ready now, not "someday"</span></li>
+            <li class="flex items-start gap-3"><span class="font-semibold text-[#0088ff]">Transparent metrics:</span> <span class="text-gray-500">Simple, human-readable KPIs that matter</span></li>
+            <li class="flex items-start gap-3"><span class="font-semibold text-[#0088ff]">Agile execution:</span> <span class="text-gray-500">Twice-monthly cadence to pivot against competitors</span></li>
+            <li class="flex items-start gap-3"><span class="font-semibold text-[#0088ff]">Real content:</span> <span class="text-gray-500">No AI-generated fluff - just substance that ranks</span></li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Our Team</h2>
+    <section class="py-24 px-6 sm:px-8 lg:px-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">Our Team</h2>
         <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-8">
-          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-3"></div><h3 class="font-semibold">Adam Gillrie</h3><p class="text-sm text-gray-500">Director</p></div>
-          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-3"></div><h3 class="font-semibold">Nick Chivinski</h3><p class="text-sm text-gray-500">VP of Sales</p></div>
-          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-3"></div><h3 class="font-semibold">David Frost</h3><p class="text-sm text-gray-500">CTO</p></div>
-          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-3"></div><h3 class="font-semibold">Emily Shultz</h3><p class="text-sm text-gray-500">Head of Operations</p></div>
-          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-3"></div><h3 class="font-semibold">Lucas Terwilliger</h3><p class="text-sm text-gray-500">Strategist</p></div>
+          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4"></div><h3 class="font-semibold text-lg">Adam Gillrie</h3><p class="text-sm text-gray-500">Director</p></div>
+          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4"></div><h3 class="font-semibold text-lg">Nick Chivinski</h3><p class="text-sm text-gray-500">VP of Sales</p></div>
+          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4"></div><h3 class="font-semibold text-lg">David Frost</h3><p class="text-sm text-gray-500">CTO</p></div>
+          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4"></div><h3 class="font-semibold text-lg">Emily Shultz</h3><p class="text-sm text-gray-500">Head of Operations</p></div>
+          <div class="text-center"><div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-4"></div><h3 class="font-semibold text-lg">Lucas Terwilliger</h3><p class="text-sm text-gray-500">Strategist</p></div>
         </div>
       </div>
     </section>
 
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center text-gray-900 mb-12">Our Values</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center"><h3 class="text-xl font-semibold mb-2">Results-Driven</h3><p class="text-gray-600">Every campaign is built to drive real conversations, test drives, and sales - not just traffic.</p></div>
-          <div class="text-center"><h3 class="text-xl font-semibold mb-2">Partnership</h3><p class="text-gray-600">We're an extension of your team, meeting twice monthly to plan and pivot based on market conditions.</p></div>
-          <div class="text-center"><h3 class="text-xl font-semibold mb-2">Innovation</h3><p class="text-gray-600">From AI-optimized websites to attribution intelligence, we stay ahead of the automotive marketing curve.</p></div>
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">Our Values</h2>
+        <div class="grid md:grid-cols-3 gap-12">
+          <div class="text-center"><h3 class="font-serif text-xl font-bold mb-3">Results-Driven</h3><p class="text-gray-500">Every campaign is built to drive real conversations, test drives, and sales - not just traffic.</p></div>
+          <div class="text-center"><h3 class="font-serif text-xl font-bold mb-3">Partnership</h3><p class="text-gray-500">We're an extension of your team, meeting twice monthly to plan and pivot based on market conditions.</p></div>
+          <div class="text-center"><h3 class="font-serif text-xl font-bold mb-3">Innovation</h3><p class="text-gray-500">From AI-optimized websites to attribution intelligence, we stay ahead of the automotive marketing curve.</p></div>
         </div>
       </div>
     </section>
@@ -613,38 +755,43 @@ def generate_about():
 
 def generate_products():
     products = [
-        ("Fully Managed Marketing", "Premium Service", "White-glove service that handles everything - co-op management, vendor coordination, website, SEO, SEM, Facebook ads, design, and ROI tracking.", "/fully-managed-marketing"),
-        ("Facebook Ads", "Capture Traffic / Drive Sales", "Hand-built Facebook Ads that lead the industry in performance. We hand-select vehicles for maximum results.", "/facebook-ads"),
-        ("Dealer SEO + GEO", "Fuel Long-Term Site Growth", "SEO + GEO optimization that positions your dealership first in traditional search and AI-powered results.", "/dealer-seo"),
-        ("PPC Ads", "Turbocharge Your PPC", "Industry-leading Google and Bing Ad campaigns that focus on your in-stock inventory.", "/ppc-ads"),
-        ("Vehicle Ads", "Stop Wasting Your VLA Budget", "Reclaim thousands wasted on Google's Display Network. Expert Performance Max management.", "/vehicle-ads"),
-        ("Dealer Websites", "Dominate Your Online Market", "SEO-first website architecture that accelerates your digital marketing efforts.", "/dealer-websites"),
-        ("Independent Dealer Websites", "Built For Your Business", "Premium websites for independent dealers and buy-here-pay-here lots. No franchise fees.", "/independent-dealer-websites"),
-        ("Anti-Dashboard AI", "Coming Soon", "AI-powered attribution and analytics that transforms how you measure marketing success.", "/anti-dashboard"),
+        ("Fully Managed Marketing", "Premium Service", "White-glove service that handles everything - co-op management, vendor coordination, website, SEO, SEM, Facebook ads, design, and ROI tracking.", "/fully-managed-marketing", "#FF6B35"),
+        ("Facebook Ads", "Capture Traffic / Drive Sales", "Hand-built Facebook Ads that lead the industry in performance. We hand-select vehicles for maximum results.", "/facebook-ads", "#FF4081"),
+        ("Dealer SEO + GEO", "Fuel Long-Term Site Growth", "SEO + GEO optimization that positions your dealership first in traditional search and AI-powered results.", "/dealer-seo", "#00E676"),
+        ("PPC Ads", "Turbocharge Your PPC", "Industry-leading Google and Bing Ad campaigns that focus on your in-stock inventory.", "/ppc-ads", "#FF6B35"),
+        ("Vehicle Ads", "Stop Wasting Your VLA Budget", "Reclaim thousands wasted on Google's Display Network. Expert Performance Max management.", "/vehicle-ads", "#00D4D4"),
+        ("Dealer Websites", "Dominate Your Online Market", "SEO-first website architecture that accelerates your digital marketing efforts.", "/dealer-websites", "#0088FF"),
+        ("Independent Dealer Websites", "Built For Your Business", "Premium websites for independent dealers and buy-here-pay-here lots. No franchise fees.", "/independent-dealer-websites", "#20B2AA"),
+        ("Anti-Dashboard AI", "Coming Soon", "AI-powered attribution and analytics that transforms how you measure marketing success.", "/anti-dashboard", "#9D4EDD"),
     ]
     cards_html = ""
-    for name, subtitle, desc, url in products:
-        cards_html += f'''        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-          <h3 class="text-xl font-semibold text-gray-900 mb-1">{name}</h3>
-          <p class="text-sm text-blue-600 font-medium mb-3">{subtitle}</p>
-          <p class="text-gray-600 text-sm mb-4">{desc}</p>
-          <a href="{url}" class="text-blue-600 font-medium text-sm hover:underline">Learn More &rarr;</a>
+    for name, subtitle, desc, url, color in products:
+        cards_html += f'''        <div class="rounded-xl border border-gray-200 p-8 hover:shadow-lg transition">
+          <div class="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg" style="background-color:{color}20;color:{color}">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="font-serif text-xl font-bold text-gray-900 mb-1">{name}</h3>
+          <p class="text-sm font-medium mb-3" style="color:{color}">{subtitle}</p>
+          <p class="text-gray-500 text-sm mb-6">{desc}</p>
+          <a href="{url}" class="text-[#0088ff] font-medium text-sm hover:underline">Learn More &rarr;</a>
         </div>\n'''
 
     content = f'''{head("Savvy Product Suite - Automotive Marketing Solutions | Savvy Dealer", "Comprehensive suite of automotive marketing products. Facebook Ads, PPC, SEO/GEO, dealer websites, and AI-powered tools.", "products")}
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Products", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Savvy Product Suite</h1>
-        <p class="text-lg text-blue-200 max-w-3xl mx-auto">At Savvy Dealer, we customize our marketing packages to meet your needs, not ours. Our comprehensive suite of products works together to counter competitor tactics and dominate in both search and generative AI results.</p>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Savvy Product Suite</h1>
+          <p class="text-xl text-white/80 max-w-3xl mx-auto">At Savvy Dealer, we customize our marketing packages to meet your needs, not ours. Our comprehensive suite of products works together to counter competitor tactics and dominate in both search and generative AI results.</p>
+        </div>
       </div>
     </section>
 
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 {cards_html}        </div>
       </div>
     </section>
@@ -660,19 +807,19 @@ def generate_book():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Book a Demo", None)])}
-    <section class="py-20 px-4">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
       <div class="max-w-2xl mx-auto">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-4 text-center">Request a Free Audit</h1>
-        <p class="text-gray-600 text-center mb-8">Fill out the form below and we'll analyze your digital presence and show you exactly how we can help.</p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 mb-4 text-center">Request a Free Audit</h1>
+        <p class="text-gray-500 text-center text-lg mb-10">Fill out the form below and we'll analyze your digital presence and show you exactly how we can help.</p>
         <form data-ajax action="/api/schedule-demo" class="space-y-5">
-          <div><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label><input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></div>
-          <div><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label><input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></div>
-          <div><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label><input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></div>
-          <div><label for="dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label><input type="text" id="dealership" name="dealership" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></div>
-          <div><label for="message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your goals</label><textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea></div>
-          <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition text-lg">Submit Request</button>
+          <div><label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name *</label><input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></div>
+          <div><label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label><input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></div>
+          <div><label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone *</label><input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></div>
+          <div><label for="dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label><input type="text" id="dealership" name="dealership" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></div>
+          <div><label for="message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your goals</label><textarea id="message" name="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></textarea></div>
+          <button type="submit" class="w-full bg-[#0088ff] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#0077e6] transition text-lg min-h-[48px]">Submit Request</button>
         </form>
-        <p class="text-center text-sm text-gray-500 mt-6">Or call us directly: <a href="tel:{PHONE_HREF}" class="text-blue-600 font-semibold">{PHONE}</a></p>
+        <p class="text-center text-sm text-gray-500 mt-8">Or call us directly: <a href="tel:{PHONE_HREF}" class="text-[#0088ff] font-semibold">{PHONE}</a></p>
       </div>
     </section>
   </main>
@@ -684,11 +831,11 @@ def generate_404():
     content = f'''{head("Page Not Found - Savvy Dealer", "The page you're looking for doesn't exist.", "404")}
 {nav()}
   <main class="flex-1">
-    <section class="py-32 px-4 text-center">
-      <h1 class="text-6xl font-extrabold text-gray-300 mb-4">404</h1>
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">Page Not Found</h2>
-      <p class="text-gray-600 mb-8">The page you're looking for doesn't exist or has been moved.</p>
-      <a href="/" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition">Back to Home</a>
+    <section class="py-32 px-6 sm:px-8 text-center">
+      <h1 class="font-serif text-8xl font-bold text-gray-200 mb-6">404</h1>
+      <h2 class="font-serif text-3xl font-bold text-gray-900 mb-4">Page Not Found</h2>
+      <p class="text-gray-500 text-lg mb-10">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="inline-flex items-center justify-center min-h-[48px] px-8 bg-[#0088ff] text-white font-semibold rounded-full hover:bg-[#0077e6] transition">Back to Home</a>
     </section>
   </main>
 {footer()}'''
@@ -700,12 +847,12 @@ def generate_visibility_audit():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Visibility Audit", None)])}
-    <section class="py-20 px-4 text-center">
+    <section class="py-32 px-6 sm:px-8 text-center">
       <div class="max-w-3xl mx-auto">
-        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">AI Visibility Audit</h1>
-        <p class="text-lg text-gray-600 mb-8">Check how visible your dealership is to AI search engines like ChatGPT, Perplexity, and Google AI Overviews.</p>
-        <a href="https://ai-compatible-v3-185609396182.us-central1.run.app" target="_blank" rel="noopener" class="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition text-lg">Run Your Free AI Visibility Audit &rarr;</a>
-        <p class="text-sm text-gray-500 mt-4">Free tool - no login required</p>
+        <h1 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 mb-6">AI Visibility Audit</h1>
+        <p class="text-xl text-gray-500 mb-10">Check how visible your dealership is to AI search engines like ChatGPT, Perplexity, and Google AI Overviews.</p>
+        <a href="https://ai-compatible-v3-185609396182.us-central1.run.app" target="_blank" rel="noopener" class="inline-flex items-center justify-center min-h-[56px] px-10 bg-[#0088ff] text-white font-semibold rounded-full hover:bg-[#0077e6] transition text-lg">Run Your Free AI Visibility Audit &rarr;</a>
+        <p class="text-sm text-gray-500 mt-6">Free tool - no login required</p>
       </div>
     </section>
 {cta_section()}
@@ -719,12 +866,16 @@ def generate_anti_dashboard():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Products", "/products"), ("Anti-Dashboard AI", None)])}
-    <section class="hero-bg text-white py-24 px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Coming Soon</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Anti-Dashboard AI</h1>
-        <p class="text-xl text-blue-100 mb-8">Something big is coming. AI will transform automotive attribution and analytics. Be among the first to see how.</p>
-        <a href="/book" class="inline-flex items-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Schedule a Preview</a>
+    <section class="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #9D4EDD 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Coming Soon</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Anti-Dashboard AI</h1>
+          <p class="mx-auto max-w-3xl text-xl text-white/90">Something big is coming. AI will transform automotive attribution and analytics. Be among the first to see how.</p>
+          <a href="/book" class="inline-flex items-center justify-center min-h-[56px] rounded-full bg-white/95 px-10 text-base font-semibold text-[#9D4EDD] backdrop-blur-sm hover:bg-white transition">Schedule a Preview</a>
+        </div>
       </div>
     </section>
   </main>
@@ -740,24 +891,28 @@ def generate_simple_pages():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Early Access", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-4xl mx-auto text-center">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Exclusive Early Access</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Not Going to NADA? See What Everyone Else Will Be Talking About First</h1>
-        <p class="text-lg text-blue-200 mb-8">Get early access to Savvy Dealer's new Anti-Dashboard Dashboard and upcoming dealer marketing tools before they are introduced at NADA.</p>
-        <a href="/book" class="inline-flex items-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Schedule Your Early Access Demo</a>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #9D4EDD 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Exclusive Early Access</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Not Going to NADA? See What Everyone Else Will Be Talking About First</h1>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">Get early access to Savvy Dealer's new Anti-Dashboard Dashboard and upcoming dealer marketing tools before they are introduced at NADA.</p>
+          <a href="/book" class="inline-flex items-center justify-center min-h-[56px] rounded-full bg-white/95 px-10 text-base font-semibold text-[#0088ff] backdrop-blur-sm hover:bg-white transition">Schedule Your Early Access Demo</a>
+        </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-3xl mx-auto prose prose-lg">
-        <p>Not everyone can make it to NADA, and that should not put you behind. Savvy Dealer is preparing to introduce a new way for dealers to measure digital marketing success, along with tools designed for AI-ready visibility, smarter spend, and clearer reporting.</p>
-        <p>Before this is shown publicly at NADA, a limited number of dealers are being given a private preview. <strong>This is your opportunity to see what is coming before the rest of the industry.</strong></p>
-        <h2>What You'll Get With an Early Preview</h2>
-        <ul>
-          <li>A private walkthrough of the Anti-Dashboard Dashboard</li>
-          <li>Insight into new reporting and attribution concepts before public release</li>
-          <li>An overview of Savvy Dealer's AI-ready website and SEO strategies</li>
-          <li>A look at how smarter paid search and social campaigns are built to convert</li>
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-3xl mx-auto">
+        <p class="text-gray-500 text-lg leading-relaxed mb-6">Not everyone can make it to NADA, and that should not put you behind. Savvy Dealer is preparing to introduce a new way for dealers to measure digital marketing success, along with tools designed for AI-ready visibility, smarter spend, and clearer reporting.</p>
+        <p class="text-gray-500 text-lg leading-relaxed mb-8">Before this is shown publicly at NADA, a limited number of dealers are being given a private preview. <strong class="text-gray-900">This is your opportunity to see what is coming before the rest of the industry.</strong></p>
+        <h2 class="font-serif text-3xl font-bold mb-6">What You'll Get With an Early Preview</h2>
+        <ul class="space-y-4 text-gray-500 text-lg">
+          <li class="flex items-start gap-3"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>A private walkthrough of the Anti-Dashboard Dashboard</li>
+          <li class="flex items-start gap-3"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Insight into new reporting and attribution concepts before public release</li>
+          <li class="flex items-start gap-3"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>An overview of Savvy Dealer's AI-ready website and SEO strategies</li>
+          <li class="flex items-start gap-3"><svg class="h-6 w-6 shrink-0 text-[#0088ff]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>A look at how smarter paid search and social campaigns are built to convert</li>
         </ul>
       </div>
     </section>
@@ -771,22 +926,26 @@ def generate_simple_pages():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("NADA Show 2026", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-4">Booth 6760N | February 4-6, 2026 | Las Vegas</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Why Visit Savvy Dealer at NADA Show 2026</h1>
-        <p class="text-lg text-blue-200 mb-8">Get exclusive access to our Anti-Dashboard, master GEO before your competitors, and discover strategies from top-performing dealers.</p>
-        <a href="/book" class="inline-flex items-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Lock in Your Strategy Session</a>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-5xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Booth 6760N | February 4-6, 2026 | Las Vegas</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Why Visit Savvy Dealer at NADA Show 2026</h1>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">Get exclusive access to our Anti-Dashboard, master GEO before your competitors, and discover strategies from top-performing dealers.</p>
+          <a href="/book" class="inline-flex items-center justify-center min-h-[56px] rounded-full bg-white/95 px-10 text-base font-semibold text-[#0088ff] backdrop-blur-sm hover:bg-white transition">Lock in Your Strategy Session</a>
+        </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold text-center mb-12">Proven Results From Real Dealers</h2>
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-center mb-16">Proven Results From Real Dealers</h2>
         <div class="grid md:grid-cols-4 gap-8 text-center">
-          <div><div class="text-3xl font-bold text-blue-600">+838%</div><div class="text-sm text-gray-600">Verified Users (Banner Chevy)</div></div>
-          <div><div class="text-3xl font-bold text-blue-600">+340%</div><div class="text-sm text-gray-600">VDP Views (Banner Chevy)</div></div>
-          <div><div class="text-3xl font-bold text-blue-600">+47%</div><div class="text-sm text-gray-600">Conversions (Brighton Ford)</div></div>
-          <div><div class="text-3xl font-bold text-blue-600">-32%</div><div class="text-sm text-gray-600">Cost Per Lead (Lake Powell Ford)</div></div>
+          <div class="rounded-xl border border-gray-200 p-6"><div class="font-serif text-4xl font-bold text-[#0088ff]">+838%</div><div class="text-sm text-gray-500 mt-2">Verified Users (Banner Chevy)</div></div>
+          <div class="rounded-xl border border-gray-200 p-6"><div class="font-serif text-4xl font-bold text-[#0088ff]">+340%</div><div class="text-sm text-gray-500 mt-2">VDP Views (Banner Chevy)</div></div>
+          <div class="rounded-xl border border-gray-200 p-6"><div class="font-serif text-4xl font-bold text-[#0088ff]">+47%</div><div class="text-sm text-gray-500 mt-2">Conversions (Brighton Ford)</div></div>
+          <div class="rounded-xl border border-gray-200 p-6"><div class="font-serif text-4xl font-bold text-[#0088ff]">-32%</div><div class="text-sm text-gray-500 mt-2">Cost Per Lead (Lake Powell Ford)</div></div>
         </div>
       </div>
     </section>
@@ -800,38 +959,40 @@ def generate_simple_pages():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Products", "/products"), ("Independent Dealer Websites", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-3 py-1 rounded-full mb-4">Independent Dealer Solutions</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Independent Dealer Websites With SEO & GEO Built In</h1>
-        <p class="text-blue-200 max-w-3xl mb-8">Get a lightning-fast, mobile-first dealer website modeled after our highest-performing dealers, with SEO and GEO baked in - without giving up control of your domain or your data.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Book a 15-Minute Demo</a>
+    <section class="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #20B2AA 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-5xl space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Independent Dealer Solutions</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Independent Dealer Websites With SEO & GEO Built In</h1>
+          <p class="mx-auto max-w-3xl text-lg text-white/80">Get a lightning-fast, mobile-first dealer website modeled after our highest-performing dealers, with SEO and GEO baked in - without giving up control of your domain or your data.</p>
+          <a href="/book" class="inline-flex items-center justify-center min-h-[56px] rounded-full bg-white/95 px-10 text-base font-semibold text-[#20B2AA] backdrop-blur-sm hover:bg-white transition">Book a 15-Minute Demo</a>
         </div>
       </div>
     </section>
 
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8">Why Most Independent Dealer Websites Leave Money on the Table</h2>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-red-50 border border-red-100 rounded-xl p-6"><h3 class="font-semibold text-red-800 mb-2">Slow on mobile</h3><p class="text-gray-600 text-sm">When your site takes too long to load, shoppers bounce before they ever see your inventory.</p></div>
-          <div class="bg-red-50 border border-red-100 rounded-xl p-6"><h3 class="font-semibold text-red-800 mb-2">Hard for Google and AI</h3><p class="text-gray-600 text-sm">Generic templates and messy URL structures make it hard for Google and AI engines to find you.</p></div>
-          <div class="bg-red-50 border border-red-100 rounded-xl p-6"><h3 class="font-semibold text-red-800 mb-2">You don't really own it</h3><p class="text-gray-600 text-sm">With some providers, your website lives on their subdomain. If you leave, you fight over your domain.</p></div>
-          <div class="bg-red-50 border border-red-100 rounded-xl p-6"><h3 class="font-semibold text-red-800 mb-2">Weak conversion paths</h3><p class="text-gray-600 text-sm">Buried phone numbers and hard-to-tap buttons mean traffic doesn't turn into leads.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="py-16 px-4 bg-gray-50">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-4">What's Included</h2>
-        <p class="text-gray-600 mb-8">Everything is built around one goal: help independent and BHPH dealers turn more visitors into real opportunities.</p>
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-12">Why Most Independent Dealer Websites Leave Money on the Table</h2>
         <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-xl p-6 border border-gray-100"><h3 class="font-semibold text-lg mb-2">High-Converting Dealer Website</h3><p class="text-gray-600 text-sm">Clean SRP/VDP structure, clear CTAs, inventory-focused design. You keep your domain.</p></div>
-          <div class="bg-white rounded-xl p-6 border border-gray-100"><h3 class="font-semibold text-lg mb-2">SEO Built In From Day One</h3><p class="text-gray-600 text-sm">Search-friendly URLs, structured data, smart internal linking.</p></div>
-          <div class="bg-white rounded-xl p-6 border border-gray-100"><h3 class="font-semibold text-lg mb-2">GEO - Generative Engine Optimization</h3><p class="text-gray-600 text-sm">Machine-readable signals so AI assistants can find and recommend your store.</p></div>
-          <div class="bg-white rounded-xl p-6 border border-gray-100"><h3 class="font-semibold text-lg mb-2">Mobile-First and Lightning Fast</h3><p class="text-gray-600 text-sm">Performance-minded templates, mobile-first layouts, fewer bounces.</p></div>
+          <div class="bg-red-50 border border-red-100 rounded-xl p-8"><h3 class="font-semibold text-red-800 mb-3">Slow on mobile</h3><p class="text-gray-500">When your site takes too long to load, shoppers bounce before they ever see your inventory.</p></div>
+          <div class="bg-red-50 border border-red-100 rounded-xl p-8"><h3 class="font-semibold text-red-800 mb-3">Hard for Google and AI</h3><p class="text-gray-500">Generic templates and messy URL structures make it hard for Google and AI engines to find you.</p></div>
+          <div class="bg-red-50 border border-red-100 rounded-xl p-8"><h3 class="font-semibold text-red-800 mb-3">You don't really own it</h3><p class="text-gray-500">With some providers, your website lives on their subdomain. If you leave, you fight over your domain.</p></div>
+          <div class="bg-red-50 border border-red-100 rounded-xl p-8"><h3 class="font-semibold text-red-800 mb-3">Weak conversion paths</h3><p class="text-gray-500">Buried phone numbers and hard-to-tap buttons mean traffic doesn't turn into leads.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 sm:px-8 lg:px-12 bg-gray-50">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-4">What's Included</h2>
+        <p class="text-gray-500 text-lg mb-12">Everything is built around one goal: help independent and BHPH dealers turn more visitors into real opportunities.</p>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white rounded-xl p-8 border border-gray-200"><h3 class="font-semibold text-lg mb-3">High-Converting Dealer Website</h3><p class="text-gray-500">Clean SRP/VDP structure, clear CTAs, inventory-focused design. You keep your domain.</p></div>
+          <div class="bg-white rounded-xl p-8 border border-gray-200"><h3 class="font-semibold text-lg mb-3">SEO Built In From Day One</h3><p class="text-gray-500">Search-friendly URLs, structured data, smart internal linking.</p></div>
+          <div class="bg-white rounded-xl p-8 border border-gray-200"><h3 class="font-semibold text-lg mb-3">GEO - Generative Engine Optimization</h3><p class="text-gray-500">Machine-readable signals so AI assistants can find and recommend your store.</p></div>
+          <div class="bg-white rounded-xl p-8 border border-gray-200"><h3 class="font-semibold text-lg mb-3">Mobile-First and Lightning Fast</h3><p class="text-gray-500">Performance-minded templates, mobile-first layouts, fewer bounces.</p></div>
         </div>
       </div>
     </section>
@@ -857,28 +1018,32 @@ def generate_simple_pages():
     ]
     cards = ""
     for title, badge, readtime, desc, url, featured in resources:
-        feat_badge = '<span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Featured</span>' if featured else ""
-        cards += f'''        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition">
-          <div class="flex items-center gap-2 mb-3"><span class="bg-gray-100 text-gray-700 text-xs px-2 py-0.5 rounded-full">{badge}</span><span class="text-xs text-gray-500">{readtime}</span>{feat_badge}</div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">{title}</h3>
-          <p class="text-gray-600 text-sm mb-4">{desc}</p>
-          <a href="{url}" class="text-blue-600 font-medium text-sm hover:underline">Read Guide &rarr;</a>
+        feat_badge = '<span class="bg-[#0088ff]/10 text-[#0088ff] text-xs px-2.5 py-1 rounded-full font-medium">Featured</span>' if featured else ""
+        cards += f'''        <div class="rounded-xl border border-gray-200 p-8 hover:shadow-lg transition">
+          <div class="flex items-center gap-2 mb-4"><span class="bg-gray-100 text-gray-700 text-xs px-2.5 py-1 rounded-full font-medium">{badge}</span><span class="text-xs text-gray-500">{readtime}</span>{feat_badge}</div>
+          <h3 class="font-serif text-xl font-bold text-gray-900 mb-3">{title}</h3>
+          <p class="text-gray-500 mb-6">{desc}</p>
+          <a href="{url}" class="text-[#0088ff] font-medium hover:underline">Read Guide &rarr;</a>
         </div>\n'''
 
     content = f'''{head("Dealer Marketing Resources - Free Guides & Playbooks | Savvy Dealer", "In-depth guides, playbooks, and strategies to help your dealership win in digital marketing.", "resources")}
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Resources", None)])}
-    <section class="hero-bg text-white py-20 px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-6">Free Resources</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Dealer Marketing Resources</h1>
-        <p class="text-lg text-blue-200">In-depth guides, playbooks, and strategies to help your dealership win in digital marketing. No fluff - just actionable insights.</p>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Free Resources</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Dealer Marketing Resources</h1>
+          <p class="text-xl text-white/80">In-depth guides, playbooks, and strategies to help your dealership win in digital marketing. No fluff - just actionable insights.</p>
+        </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-6">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
 {cards}        </div>
       </div>
     </section>
@@ -896,53 +1061,57 @@ def generate_simple_pages():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Case Studies", None)])}
-    <div class="bg-blue-600 text-white text-center py-3 px-4 text-sm">
+    <div class="bg-[#0088ff] text-white text-center py-3 px-6 text-sm">
       <a href="/case-studies/ai-compatibility" class="hover:underline font-medium">84% of Dealer Websites Are Invisible to AI -- See the Full Study &rarr;</a>
     </div>
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <span class="inline-block bg-white/10 text-blue-200 text-sm font-medium px-4 py-1.5 rounded-full mb-4">Real Results</span>
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Dealerships Winning with Savvy Dealer</h1>
-        <p class="text-lg text-blue-200">From improved website performance to crystal-clear attribution, see how we help dealerships drive measurable results.</p>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-5 py-2.5 text-sm backdrop-blur-md">
+            <span class="font-medium text-white">Real Results</span>
+          </div>
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">Dealerships Winning with Savvy Dealer</h1>
+          <p class="text-xl text-white/80">From improved website performance to crystal-clear attribution, see how we help dealerships drive measurable results.</p>
+        </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto space-y-12">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto space-y-12">
         <!-- Banner Chevrolet -->
-        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-          <div class="flex items-center gap-2 mb-4"><h2 class="text-2xl font-bold">Banner Chevrolet</h2><span class="text-sm text-gray-500">New Orleans, LA</span></div>
-          <p class="text-gray-600 mb-6">Slow mobile experience with weak Core Web Vitals suppressed organic and paid performance. Disjointed paid media limited reach and efficiency.</p>
-          <div class="grid md:grid-cols-4 gap-6 mb-6">
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+838%</div><div class="text-sm text-gray-600">Verified Users YoY</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+340%</div><div class="text-sm text-gray-600">VDP Views YoY</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">&lt;1.5s</div><div class="text-sm text-gray-600">Mobile LCP</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">-25%</div><div class="text-sm text-gray-600">Media Spend YoY</div></div>
+        <div class="rounded-xl border border-gray-200 p-8">
+          <div class="flex items-center gap-3 mb-4"><h2 class="font-serif text-2xl font-bold">Banner Chevrolet</h2><span class="text-sm text-gray-500">New Orleans, LA</span></div>
+          <p class="text-gray-500 mb-8">Slow mobile experience with weak Core Web Vitals suppressed organic and paid performance. Disjointed paid media limited reach and efficiency.</p>
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+838%</div><div class="text-sm text-gray-500 mt-1">Verified Users YoY</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+340%</div><div class="text-sm text-gray-500 mt-1">VDP Views YoY</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">&lt;1.5s</div><div class="text-sm text-gray-500 mt-1">Mobile LCP</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">-25%</div><div class="text-sm text-gray-500 mt-1">Media Spend YoY</div></div>
           </div>
-          <blockquote class="border-l-4 border-blue-600 pl-4 italic text-gray-600">"After moving to Savvy Dealer and unifying our SEO, Google Ads, and Meta strategy, our results took off."<br><span class="not-italic font-semibold text-gray-900">- Greg Jones, General Manager</span></blockquote>
+          <blockquote class="border-l-4 border-[#0088ff] pl-6 italic text-gray-500">&ldquo;After moving to Savvy Dealer and unifying our SEO, Google Ads, and Meta strategy, our results took off.&rdquo;<br><span class="not-italic font-semibold text-gray-900 mt-2 block">- Greg Jones, General Manager</span></blockquote>
         </div>
         <!-- Brighton Ford -->
-        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-          <div class="flex items-center gap-2 mb-4"><h2 class="text-2xl font-bold">Brighton Ford</h2><span class="text-sm text-gray-500">Brighton, CO</span></div>
-          <p class="text-gray-600 mb-6">Needed consistent marketing performance and better ROI visibility across all digital channels.</p>
-          <div class="grid md:grid-cols-4 gap-6 mb-6">
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+47%</div><div class="text-sm text-gray-600">Conversions</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+62%</div><div class="text-sm text-gray-600">Quality Traffic</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+38%</div><div class="text-sm text-gray-600">Paid Media Efficiency</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+54%</div><div class="text-sm text-gray-600">SEO Visibility</div></div>
+        <div class="rounded-xl border border-gray-200 p-8">
+          <div class="flex items-center gap-3 mb-4"><h2 class="font-serif text-2xl font-bold">Brighton Ford</h2><span class="text-sm text-gray-500">Brighton, CO</span></div>
+          <p class="text-gray-500 mb-8">Needed consistent marketing performance and better ROI visibility across all digital channels.</p>
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+47%</div><div class="text-sm text-gray-500 mt-1">Conversions</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+62%</div><div class="text-sm text-gray-500 mt-1">Quality Traffic</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+38%</div><div class="text-sm text-gray-500 mt-1">Paid Media Efficiency</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+54%</div><div class="text-sm text-gray-500 mt-1">SEO Visibility</div></div>
           </div>
-          <blockquote class="border-l-4 border-blue-600 pl-4 italic text-gray-600">"Savvy Dealer nailed the essentials: a high-performing website, marketing that delivers results, consistent service."<br><span class="not-italic font-semibold text-gray-900">- Josh Mead, General Manager</span></blockquote>
+          <blockquote class="border-l-4 border-[#0088ff] pl-6 italic text-gray-500">&ldquo;Savvy Dealer nailed the essentials: a high-performing website, marketing that delivers results, consistent service.&rdquo;<br><span class="not-italic font-semibold text-gray-900 mt-2 block">- Josh Mead, General Manager</span></blockquote>
         </div>
         <!-- Lake Powell & Alamo -->
-        <div class="bg-white rounded-xl p-8 shadow-sm border border-gray-100">
-          <div class="flex items-center gap-2 mb-4"><h2 class="text-2xl font-bold">Lake Powell Ford & Alamo Ford</h2><span class="text-sm text-gray-500">Page, AZ & San Antonio, TX</span></div>
-          <p class="text-gray-600 mb-6">Managing marketing across two distinct markets with different competition levels and customer demographics.</p>
-          <div class="grid md:grid-cols-4 gap-6 mb-6">
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+68%</div><div class="text-sm text-gray-600">Lead Volume</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">-32%</div><div class="text-sm text-gray-600">Cost Per Lead</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+44%</div><div class="text-sm text-gray-600">Appointment Rate</div></div>
-            <div class="text-center bg-green-50 rounded-lg p-4"><div class="text-2xl font-bold text-green-600">+100%</div><div class="text-sm text-gray-600">Attribution Clarity</div></div>
+        <div class="rounded-xl border border-gray-200 p-8">
+          <div class="flex items-center gap-3 mb-4"><h2 class="font-serif text-2xl font-bold">Lake Powell Ford & Alamo Ford</h2><span class="text-sm text-gray-500">Page, AZ & San Antonio, TX</span></div>
+          <p class="text-gray-500 mb-8">Managing marketing across two distinct markets with different competition levels and customer demographics.</p>
+          <div class="grid md:grid-cols-4 gap-6 mb-8">
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+68%</div><div class="text-sm text-gray-500 mt-1">Lead Volume</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">-32%</div><div class="text-sm text-gray-500 mt-1">Cost Per Lead</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+44%</div><div class="text-sm text-gray-500 mt-1">Appointment Rate</div></div>
+            <div class="text-center bg-green-50 rounded-xl p-6"><div class="font-serif text-3xl font-bold text-green-600">+100%</div><div class="text-sm text-gray-500 mt-1">Attribution Clarity</div></div>
           </div>
-          <blockquote class="border-l-4 border-blue-600 pl-4 italic text-gray-600">"Month after month we see consistent performance improvements. Attribution is clear, budgets are transparent."<br><span class="not-italic font-semibold text-gray-900">- David Blake, General Manager</span></blockquote>
+          <blockquote class="border-l-4 border-[#0088ff] pl-6 italic text-gray-500">&ldquo;Month after month we see consistent performance improvements. Attribution is clear, budgets are transparent.&rdquo;<br><span class="not-italic font-semibold text-gray-900 mt-2 block">- David Blake, General Manager</span></blockquote>
         </div>
       </div>
     </section>
@@ -956,25 +1125,25 @@ def generate_simple_pages():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Case Studies", "/case-studies"), ("AI Compatibility Study", None)])}
-    <section class="hero-bg text-white py-20 px-4">
-      <div class="max-w-6xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6">84% of Dealer Websites Are Invisible to AI</h1>
-        <div class="grid md:grid-cols-4 gap-6 mt-8">
-          <div><div class="text-4xl font-bold">84%</div><div class="text-blue-200 text-sm">Failing AI compatibility</div></div>
-          <div><div class="text-4xl font-bold">48%</div><div class="text-blue-200 text-sm">Actively blocking AI</div></div>
-          <div><div class="text-4xl font-bold">34</div><div class="text-blue-200 text-sm">Average score / 100</div></div>
-          <div><div class="text-4xl font-bold">14%</div><div class="text-blue-200 text-sm">Passing (B or higher)</div></div>
+    <section class="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl mb-12">84% of Dealer Websites Are Invisible to AI</h1>
+        <div class="grid md:grid-cols-4 gap-8">
+          <div class="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><div class="font-serif text-4xl font-bold text-white">84%</div><div class="text-white/70 text-sm mt-2">Failing AI compatibility</div></div>
+          <div class="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><div class="font-serif text-4xl font-bold text-white">48%</div><div class="text-white/70 text-sm mt-2">Actively blocking AI</div></div>
+          <div class="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><div class="font-serif text-4xl font-bold text-white">34</div><div class="text-white/70 text-sm mt-2">Average score / 100</div></div>
+          <div class="rounded-xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm"><div class="font-serif text-4xl font-bold text-white">14%</div><div class="text-white/70 text-sm mt-2">Passing (B or higher)</div></div>
         </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-3xl mx-auto prose prose-lg">
-        <h2>The Two-Part Problem</h2>
-        <p><strong>Part 1: Access.</strong> 48% of dealer websites block AI crawlers via robots.txt, CloudFlare, or HTTP-level blocking.</p>
-        <p><strong>Part 2: Optimization.</strong> Even sites that allow AI access often lack structured data. 31% have zero LocalBusiness schema.</p>
-        <h2>What This Means For Your Dealership</h2>
-        <p>If your website is invisible to AI search engines like ChatGPT, Perplexity, and Google AI Overviews, you're losing potential customers who never even know you exist.</p>
-        <p class="text-center mt-8"><a href="/visibility-audit" class="inline-flex items-center px-8 py-3 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition no-underline">Check Your Website Free &rarr;</a></p>
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-3xl mx-auto">
+        <h2 class="font-serif text-3xl font-bold mb-6">The Two-Part Problem</h2>
+        <p class="text-gray-500 text-lg leading-relaxed mb-4"><strong class="text-gray-900">Part 1: Access.</strong> 48% of dealer websites block AI crawlers via robots.txt, CloudFlare, or HTTP-level blocking.</p>
+        <p class="text-gray-500 text-lg leading-relaxed mb-10"><strong class="text-gray-900">Part 2: Optimization.</strong> Even sites that allow AI access often lack structured data. 31% have zero LocalBusiness schema.</p>
+        <h2 class="font-serif text-3xl font-bold mb-6">What This Means For Your Dealership</h2>
+        <p class="text-gray-500 text-lg leading-relaxed mb-4">If your website is invisible to AI search engines like ChatGPT, Perplexity, and Google AI Overviews, you're losing potential customers who never even know you exist.</p>
+        <p class="text-center mt-10"><a href="/visibility-audit" class="inline-flex items-center justify-center min-h-[56px] px-10 bg-[#0088ff] text-white font-semibold rounded-full hover:bg-[#0077e6] transition">Check Your Website Free &rarr;</a></p>
       </div>
     </section>
 {cta_section()}

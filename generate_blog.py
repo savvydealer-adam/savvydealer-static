@@ -133,7 +133,7 @@ def inline_md(text):
     # Images
     text = re.sub(r'!\[([^\]]*)\]\(([^)]+)\)', r'<img src="\2" alt="\1" class="rounded-lg my-4 max-w-full" loading="lazy">', text)
     # Links
-    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" class="text-blue-600 hover:underline">\1</a>', text)
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" class="text-[#0088ff] hover:underline">\1</a>', text)
     # Bold
     text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
     # Italic
@@ -191,18 +191,18 @@ def generate_blog():
         if isinstance(p["tags"], list):
             for t in p["tags"][:3]:
                 tags_html += f'<span class="bg-gray-100 text-gray-600 text-xs px-2 py-0.5 rounded-full">{t}</span>'
-        img_html = f'<img src="{p["image"]}" alt="{p["title"]}" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">' if p["image"] else '<div class="w-full h-48 bg-gray-200 rounded-t-xl"></div>'
-        cards_html += f'''      <a href="/blog/{p["slug"]}" class="bg-white rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition block">
+        img_html = f'<img src="{p["image"]}" alt="{p["title"]}" class="w-full h-48 object-cover rounded-t-xl" loading="lazy">' if p["image"] else '<div class="w-full h-48 bg-gray-100 rounded-t-xl"></div>'
+        cards_html += f'''      <a href="/blog/{p["slug"]}" class="rounded-xl border border-gray-200 hover:shadow-lg transition block">
         {img_html}
-        <div class="p-5">
-          <div class="flex items-center gap-2 mb-2 flex-wrap">
-            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">{p["category"]}</span>
+        <div class="p-6">
+          <div class="flex items-center gap-2 mb-3 flex-wrap">
+            <span class="bg-[#0088ff]/10 text-[#0088ff] text-xs px-2.5 py-1 rounded-full font-medium">{p["category"]}</span>
             <span class="text-xs text-gray-500">{p["published"]}</span>
             <span class="text-xs text-gray-500">{p["reading_time"]} min read</span>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">{p["title"]}</h3>
-          <p class="text-gray-600 text-sm line-clamp-3">{p["excerpt"]}</p>
-          <div class="flex gap-2 mt-3">{tags_html}</div>
+          <h3 class="font-serif text-lg font-bold text-gray-900 mb-2 line-clamp-2">{p["title"]}</h3>
+          <p class="text-gray-500 text-sm line-clamp-3">{p["excerpt"]}</p>
+          <div class="flex gap-2 mt-4">{tags_html}</div>
         </div>
       </a>\n'''
 
@@ -210,15 +210,17 @@ def generate_blog():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Blog", None)])}
-    <section class="hero-bg text-white py-16 px-4 text-center">
-      <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">The Savvy Blog</h1>
-        <p class="text-lg text-blue-200">Expert insights on automotive digital marketing, dealer websites, SEO, PPC, and industry trends.</p>
+    <section class="relative flex min-h-[50vh] items-center justify-center overflow-hidden px-6 py-20 sm:px-8 lg:px-12" style="background:linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #0088ff 100%)">
+      <div class="relative z-10 max-w-7xl mx-auto text-center">
+        <div class="mx-auto max-w-4xl space-y-6">
+          <h1 class="font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">The Savvy Blog</h1>
+          <p class="text-xl text-white/80">Expert insights on automotive digital marketing, dealer websites, SEO, PPC, and industry trends.</p>
+        </div>
       </div>
     </section>
-    <section class="py-16 px-4">
-      <div class="max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section class="py-24 px-6 sm:px-8 lg:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 {cards_html}        </div>
       </div>
     </section>
@@ -235,20 +237,20 @@ def generate_blog():
 {nav()}
   <main class="flex-1">
 {breadcrumb([("Home", "/"), ("Blog", "/blog"), (p["title"][:50] + "..." if len(p["title"]) > 50 else p["title"], None)])}
-    <article class="py-12 px-4">
+    <article class="py-24 px-6 sm:px-8 lg:px-12">
       <div class="max-w-3xl mx-auto">
-        <div class="mb-8">
-          <div class="flex items-center gap-3 mb-4 flex-wrap">
-            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">{p["category"]}</span>
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-6 flex-wrap">
+            <span class="bg-[#0088ff]/10 text-[#0088ff] text-xs px-2.5 py-1 rounded-full font-medium">{p["category"]}</span>
             <span class="text-sm text-gray-500">{p["published"]}</span>
             <span class="text-sm text-gray-500">{p["reading_time"]} min read</span>
           </div>
-          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">{p["title"]}</h1>
-          <p class="text-lg text-gray-600 mb-4">{p["excerpt"]}</p>
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">{p["title"]}</h1>
+          <p class="text-xl text-gray-500 mb-4">{p["excerpt"]}</p>
           <p class="text-sm text-gray-500">By {p["author"]}</p>
         </div>
-        {f'<img src="{p["image"]}" alt="{p["title"]}" class="w-full rounded-xl mb-8" loading="lazy">' if p["image"] else ""}
-        <div class="prose prose-lg max-w-none">
+        {f'<img src="{p["image"]}" alt="{p["title"]}" class="w-full rounded-xl mb-10" loading="lazy">' if p["image"] else ""}
+        <div class="max-w-none">
           {p["body_html"]}
         </div>
       </div>

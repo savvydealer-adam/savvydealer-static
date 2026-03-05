@@ -13,118 +13,130 @@
   <meta property="og:image" content="https://www.savvydealer.com/og-image.png">
   <meta property="og:site_name" content="Savvy Dealer">
   <meta name="twitter:card" content="summary_large_image">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KW33MW');</script>
+  <!-- End Google Tag Manager -->
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <meta name="recaptcha-site-key" content="">
+  <meta name="recaptcha-site-key" content="6LdJUQosAAAAAL9SjyE7uaS44EFnu1zVXk97zhDW">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e3a5f',900:'#0a2540',950:'#061a30' },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Space Grotesk', 'sans-serif'],
           },
-          fontFamily: { sans: ['Inter', 'sans-serif'] }
+          borderRadius: {
+            lg: '9px',
+            md: '6px',
+            sm: '3px',
+          },
         }
       }
     }
   </script>
   <style>
     body { font-family: 'Inter', sans-serif; }
-    .hero-bg { background: linear-gradient(135deg, #0a2540 0%, #1e3a5f 50%, #2563eb 100%); }
-    .cta-bg { background: linear-gradient(135deg, #1e3a5f 0%, #0a2540 100%); }
+    .font-serif { font-family: 'Space Grotesk', sans-serif; }
+    html { scroll-padding-top: 5rem; }
   </style>
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdJUQosAAAAAL9SjyE7uaS44EFnu1zVXk97zhDW" async defer></script>
   
 </head>
 <body class="min-h-screen flex flex-col bg-white text-gray-900">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KW33MW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <!-- Header -->
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 h-16">
+  <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-gray-200 transition-all duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 sm:px-8 h-20">
       <a href="/" class="flex items-center gap-2" aria-label="Savvy Dealer Home">
-        <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10" loading="eager">
+        <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-9 w-auto" loading="eager">
       </a>
-      <nav aria-label="Main navigation" class="hidden lg:flex items-center gap-5">
+      <nav aria-label="Main navigation" class="hidden md:flex items-center gap-6">
         <!-- Products dropdown -->
         <div class="relative">
-          <button id="products-dropdown-btn" class="text-sm font-medium text-gray-600 hover:text-blue-700 flex items-center gap-1">
+          <button id="products-dropdown-btn" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors flex items-center gap-1">
             Products
             <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-          <div id="products-dropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
-            <a href="/products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-medium">All Products</a>
+          <div id="products-dropdown" class="hidden absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-lg border border-gray-200 py-2 z-50">
+            <a href="/products" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 hover:text-gray-900 font-medium">All Products</a>
             <hr class="my-1 border-gray-100">
-            <a href="/fully-managed-marketing" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Fully Managed Marketing</a>
-            <a href="/dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer Websites</a>
-            <a href="/independent-dealer-websites" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Independent Dealer Websites</a>
-            <a href="/dealer-seo" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Dealer SEO + GEO</a>
-            <a href="/vehicle-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Vehicle Ads</a>
-            <a href="/facebook-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Facebook Ads</a>
-            <a href="/ppc-ads" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">PPC Ads</a>
-            <a href="/anti-dashboard" class="block px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 hover:text-blue-700">Anti-Dashboard AI</a>
+            <a href="/fully-managed-marketing" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Fully Managed Marketing</a>
+            <a href="/dealer-websites" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Dealer Websites</a>
+            <a href="/independent-dealer-websites" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Independent Dealer Websites</a>
+            <a href="/dealer-seo" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Dealer SEO + GEO</a>
+            <a href="/vehicle-ads" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Vehicle Ads</a>
+            <a href="/facebook-ads" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Facebook Ads</a>
+            <a href="/ppc-ads" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">PPC Ads</a>
+            <a href="/anti-dashboard" class="block px-4 py-2 text-sm text-gray-500 hover:bg-gray-50 hover:text-gray-900">Anti-Dashboard AI</a>
           </div>
         </div>
-        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700">Resources</a>
-        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700">Blog</a>
-        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700">About</a>
-        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700">Case Studies</a>
-        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700">Contact</button>
-        <a href="/book" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition">Request Free Audit</a>
+        <a href="/resources" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Contact</button>
+        <a href="/book" class="inline-flex items-center min-h-[40px] px-6 bg-[#0088ff] text-white text-sm font-semibold rounded-full hover:bg-[#0077e6] transition">Request Free Audit</a>
       </nav>
       <!-- Mobile menu button -->
-      <button id="mobile-menu-btn" class="lg:hidden p-2 text-gray-600" aria-label="Toggle menu" aria-expanded="false">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-500" aria-label="Toggle menu" aria-expanded="false">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
     <!-- Mobile menu -->
-    <nav id="mobile-menu" class="hidden lg:hidden border-t border-gray-200 bg-white px-4 py-4" aria-label="Mobile navigation">
-      <div class="flex flex-col gap-3">
-        <button id="mobile-products-btn" class="flex items-center justify-between text-sm font-medium text-gray-600 hover:text-blue-700 py-1">
+    <nav id="mobile-menu" class="hidden md:hidden border-t border-gray-200 bg-white px-4 py-4" aria-label="Mobile navigation">
+      <div class="flex flex-col gap-4">
+        <button id="mobile-products-btn" class="flex items-center justify-between text-sm font-medium text-gray-500 hover:text-gray-900 py-1">
           Products
           <svg class="w-4 h-4 dropdown-arrow transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
-        <div id="mobile-products-menu" class="hidden pl-4 flex flex-col gap-2">
-          <a href="/products" class="text-sm text-gray-600 hover:text-blue-700 py-1">All Products</a>
-          <a href="/fully-managed-marketing" class="text-sm text-gray-600 hover:text-blue-700 py-1">Fully Managed Marketing</a>
-          <a href="/dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer Websites</a>
-          <a href="/independent-dealer-websites" class="text-sm text-gray-600 hover:text-blue-700 py-1">Independent Dealer Websites</a>
-          <a href="/dealer-seo" class="text-sm text-gray-600 hover:text-blue-700 py-1">Dealer SEO + GEO</a>
-          <a href="/vehicle-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Vehicle Ads</a>
-          <a href="/facebook-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">Facebook Ads</a>
-          <a href="/ppc-ads" class="text-sm text-gray-600 hover:text-blue-700 py-1">PPC Ads</a>
-          <a href="/anti-dashboard" class="text-sm text-gray-600 hover:text-blue-700 py-1">Anti-Dashboard AI</a>
+        <div id="mobile-products-menu" class="hidden pl-4 flex flex-col gap-3 border-t pt-3">
+          <a href="/products" class="text-sm text-gray-500 hover:text-gray-900 py-1">All Products</a>
+          <a href="/fully-managed-marketing" class="text-sm text-gray-500 hover:text-gray-900 py-1">Fully Managed Marketing</a>
+          <a href="/dealer-websites" class="text-sm text-gray-500 hover:text-gray-900 py-1">Dealer Websites</a>
+          <a href="/independent-dealer-websites" class="text-sm text-gray-500 hover:text-gray-900 py-1">Independent Dealer Websites</a>
+          <a href="/dealer-seo" class="text-sm text-gray-500 hover:text-gray-900 py-1">Dealer SEO + GEO</a>
+          <a href="/vehicle-ads" class="text-sm text-gray-500 hover:text-gray-900 py-1">Vehicle Ads</a>
+          <a href="/facebook-ads" class="text-sm text-gray-500 hover:text-gray-900 py-1">Facebook Ads</a>
+          <a href="/ppc-ads" class="text-sm text-gray-500 hover:text-gray-900 py-1">PPC Ads</a>
+          <a href="/anti-dashboard" class="text-sm text-gray-500 hover:text-gray-900 py-1">Anti-Dashboard AI</a>
         </div>
-        <a href="/resources" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Resources</a>
-        <a href="/blog" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Blog</a>
-        <a href="/about" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">About</a>
-        <a href="/case-studies" class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1">Case Studies</a>
-        <button data-lead-form class="text-sm font-medium text-gray-600 hover:text-blue-700 py-1 text-left">Contact</button>
-        <a href="/book" class="inline-flex justify-center items-center px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700">Request Free Audit</a>
+        <a href="/resources" class="text-sm font-medium text-gray-500 hover:text-gray-900 py-1">Resources</a>
+        <a href="/blog" class="text-sm font-medium text-gray-500 hover:text-gray-900 py-1">Blog</a>
+        <a href="/about" class="text-sm font-medium text-gray-500 hover:text-gray-900 py-1">About</a>
+        <a href="/case-studies" class="text-sm font-medium text-gray-500 hover:text-gray-900 py-1">Case Studies</a>
+        <button data-lead-form class="text-sm font-medium text-gray-500 hover:text-gray-900 py-1 text-left">Contact</button>
+        <a href="/book" class="inline-flex justify-center items-center min-h-[40px] px-6 bg-[#0088ff] text-white text-sm font-semibold rounded-full hover:bg-[#0077e6]">Request Free Audit</a>
       </div>
     </nav>
   </header>
   <main class="flex-1">
-  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-4 sm:px-6 py-3 text-sm">
-    <a href="/" class="text-blue-600 hover:underline">Home</a> <span class="text-gray-400 mx-1">/</span> <a href="/blog" class="text-blue-600 hover:underline">Blog</a> <span class="text-gray-400 mx-1">/</span> <span class="text-gray-500">We Released the AI Compatibility Tool. Here's What...</span>
+  <nav aria-label="Breadcrumb" class="max-w-7xl mx-auto px-6 sm:px-8 py-4 text-sm">
+    <a href="/" class="text-[#0088ff] hover:underline">Home</a> <span class="text-gray-300 mx-1">/</span> <a href="/blog" class="text-[#0088ff] hover:underline">Blog</a> <span class="text-gray-300 mx-1">/</span> <span class="text-gray-400">We Released the AI Compatibility Tool. Here's What...</span>
   </nav>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.savvydealer.com/"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.savvydealer.com/blog"},{"@type":"ListItem","position":3,"name":"We Released the AI Compatibility Tool. Here's What...","item":"https://www.savvydealer.com"}]}</script>
-    <article class="py-12 px-4">
+    <article class="py-24 px-6 sm:px-8 lg:px-12">
       <div class="max-w-3xl mx-auto">
-        <div class="mb-8">
-          <div class="flex items-center gap-3 mb-4 flex-wrap">
-            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full">Research</span>
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-6 flex-wrap">
+            <span class="bg-[#0088ff]/10 text-[#0088ff] text-xs px-2.5 py-1 rounded-full font-medium">Research</span>
             <span class="text-sm text-gray-500">2026-01-18</span>
             <span class="text-sm text-gray-500">5 min read</span>
           </div>
-          <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">We Released the AI Compatibility Tool. Here's What We Found.</h1>
-          <p class="text-lg text-gray-600 mb-4">Less than 20% of dealership websites are not blocking AI. Even fewer have pages that are actually compliant with AI best practices. That's what we found when we started testing.</p>
+          <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">We Released the AI Compatibility Tool. Here's What We Found.</h1>
+          <p class="text-xl text-gray-500 mb-4">Less than 20% of dealership websites are not blocking AI. Even fewer have pages that are actually compliant with AI best practices. That's what we found when we started testing.</p>
           <p class="text-sm text-gray-500">By Adam Gillrie</p>
         </div>
-        <img src="/images/ai_dealership_compatibility_concept_art.png" alt="We Released the AI Compatibility Tool. Here's What We Found." class="w-full rounded-xl mb-8" loading="lazy">
-        <div class="prose prose-lg max-w-none">
+        <img src="/images/ai_dealership_compatibility_concept_art.png" alt="We Released the AI Compatibility Tool. Here's What We Found." class="w-full rounded-xl mb-10" loading="lazy">
+        <div class="max-w-none">
           <p class="text-gray-700 leading-relaxed my-4">Less than 20% of dealership websites are not blocking AI. Even fewer have pages that are actually compliant with AI best practices.</p>
 <p class="text-gray-700 leading-relaxed my-4">That's what we found when we started testing. And it should concern every dealer in the country.</p>
 <h2 class="text-2xl font-bold mt-10 mb-4">How We Discovered the Problem</h2>
@@ -157,110 +169,110 @@
 <h2 class="text-2xl font-bold mt-10 mb-4">What's Next</h2>
 <p class="text-gray-700 leading-relaxed my-4">We're continuing to gather data from Version 2, and we'll release more findings soon. Early results are telling.</p>
 <p class="text-gray-700 leading-relaxed my-4">In the meantime: test your site. Share the results with your vendor. Demand a timeline.</p>
-<p class="text-gray-700 leading-relaxed my-4"><strong><a href="https://ai-detect.savvydealer.com" class="text-blue-600 hover:underline">Run the AI Compatibility Test now at ai-detect.savvydealer.com</a></strong></p>
+<p class="text-gray-700 leading-relaxed my-4"><strong><a href="https://ai-detect.savvydealer.com" class="text-[#0088ff] hover:underline">Run the AI Compatibility Test now at ai-detect.savvydealer.com</a></strong></p>
 <p class="text-gray-700 leading-relaxed my-4">The dealers who get ahead of this shift will capture leads directly. The ones who wait will watch third parties fill the gap.</p>
 <p class="text-gray-700 leading-relaxed my-4">We've seen this movie before with mobile-first. The ending doesn't change just because we're in automotive.</p>
         </div>
       </div>
     </article>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"We Released the AI Compatibility Tool. Here's What We Found.","author":{"@type":"Person","name":"Adam Gillrie"},"datePublished":"2026-01-18","publisher":{"@type":"Organization","name":"Savvy Dealer","url":"https://www.savvydealer.com"}}</script>
-  <section class="cta-bg text-white py-16 px-4">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Dominate Your Market?</h2>
-      <p class="text-lg text-blue-100 mb-8">See how Savvy Dealer can help your dealership drive measurable results.</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/book" class="inline-flex items-center justify-center px-8 py-3 bg-white text-blue-900 font-semibold rounded-full hover:bg-blue-50 transition">Request Free Audit</a>
-        <a href="tel:8135013229" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition">Call Now: (813) 501-3229</a>
+  <section class="bg-gray-50 py-32">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+      <div class="mx-auto max-w-3xl">
+        <h2 class="font-serif text-4xl sm:text-5xl font-bold mb-6">Ready to Dominate Your Market?</h2>
+        <p class="text-xl text-gray-500 mb-10">See how Savvy Dealer can help your dealership drive measurable results.</p>
+        <div class="flex flex-col items-center justify-center gap-6 sm:flex-row">
+          <a href="/book" class="inline-flex items-center justify-center min-h-[56px] px-10 bg-[#0088ff] text-white font-semibold rounded-full hover:bg-[#0077e6] transition text-base">Request Free Audit</a>
+          <a href="tel:8135013229" class="inline-flex items-center justify-center min-h-[56px] px-10 border border-gray-200 text-gray-900 font-semibold rounded-full hover:bg-gray-50 transition text-base">Call (813) 501-3229</a>
+        </div>
       </div>
     </div>
   </section>
   </main>
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+  <footer class="border-t bg-white mt-auto">
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-20">
+      <div class="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         <div>
-          <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10 mb-4 brightness-200">
-          <p class="text-sm text-gray-400 mb-4">Digital marketing for auto dealers. We don't outspend the competition - we outsmart them.</p>
-          <div class="flex gap-3">
-            <a href="https://www.facebook.com/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="Facebook">
+          <img src="/images/savvy-dealer-logo_1762641721511.png" alt="Savvy Dealer" class="h-10 w-auto mb-6">
+          <p class="text-gray-500 max-w-xs mb-6">Digital marketing for auto dealers. We don't outspend the competition - we outsmart them.</p>
+          <div class="flex gap-4">
+            <a href="https://www.facebook.com/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-gray-900 transition-colors" aria-label="Facebook">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
             </a>
-            <a href="https://www.linkedin.com/company/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-white" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/savvydealer" target="_blank" rel="noopener" class="text-gray-400 hover:text-gray-900 transition-colors" aria-label="LinkedIn">
               <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
             </a>
           </div>
         </div>
         <div>
-          <h3 class="text-white font-semibold mb-4">Products</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/fully-managed-marketing" class="hover:text-white">Fully Managed Marketing</a></li>
-            <li><a href="/facebook-ads" class="hover:text-white">Facebook Ads</a></li>
-            <li><a href="/ppc-ads" class="hover:text-white">PPC Ads</a></li>
-            <li><a href="/dealer-seo" class="hover:text-white">Dealer SEO + GEO</a></li>
-            <li><a href="/dealer-websites" class="hover:text-white">Dealer Websites</a></li>
-            <li><a href="/independent-dealer-websites" class="hover:text-white">Independent Dealer Websites</a></li>
-            <li><a href="/vehicle-ads" class="hover:text-white">Vehicle Ads</a></li>
-            <li><a href="/anti-dashboard" class="hover:text-white">Anti-Dashboard AI</a></li>
+          <h3 class="text-sm font-semibold uppercase tracking-wide mb-6">Products</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="/fully-managed-marketing" class="text-gray-500 hover:text-gray-900 transition-colors">Fully Managed Marketing</a></li>
+            <li><a href="/facebook-ads" class="text-gray-500 hover:text-gray-900 transition-colors">Facebook Ads</a></li>
+            <li><a href="/ppc-ads" class="text-gray-500 hover:text-gray-900 transition-colors">PPC Ads</a></li>
+            <li><a href="/dealer-seo" class="text-gray-500 hover:text-gray-900 transition-colors">Dealer SEO + GEO</a></li>
+            <li><a href="/dealer-websites" class="text-gray-500 hover:text-gray-900 transition-colors">Dealer Websites</a></li>
+            <li><a href="/independent-dealer-websites" class="text-gray-500 hover:text-gray-900 transition-colors">Independent Dealer Websites</a></li>
+            <li><a href="/vehicle-ads" class="text-gray-500 hover:text-gray-900 transition-colors">Vehicle Ads</a></li>
+            <li><a href="/anti-dashboard" class="text-gray-500 hover:text-gray-900 transition-colors">Anti-Dashboard AI</a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-white font-semibold mb-4">Company</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="/about" class="hover:text-white">About</a></li>
-            <li><a href="/blog" class="hover:text-white">Blog</a></li>
-            <li><a href="/case-studies" class="hover:text-white">Case Studies</a></li>
-            <li><a href="/resources" class="hover:text-white">Resources</a></li>
-            <li><a href="/book" class="hover:text-white">Book a Demo</a></li>
-            <li><a href="/privacy-policy" class="hover:text-white">Privacy Policy</a></li>
-            <li><a href="/end-user-agreement" class="hover:text-white">End User Agreement</a></li>
+          <h3 class="text-sm font-semibold uppercase tracking-wide mb-6">Company</h3>
+          <ul class="space-y-4 text-sm">
+            <li><a href="/about" class="text-gray-500 hover:text-gray-900 transition-colors">About</a></li>
+            <li><a href="/blog" class="text-gray-500 hover:text-gray-900 transition-colors">Blog</a></li>
+            <li><a href="/case-studies" class="text-gray-500 hover:text-gray-900 transition-colors">Case Studies</a></li>
+            <li><a href="/resources" class="text-gray-500 hover:text-gray-900 transition-colors">Resources</a></li>
+            <li><a href="/book" class="text-gray-500 hover:text-gray-900 transition-colors">Book a Demo</a></li>
+            <li><a href="/privacy-policy" class="text-gray-500 hover:text-gray-900 transition-colors">Privacy Policy</a></li>
+            <li><a href="/end-user-agreement" class="text-gray-500 hover:text-gray-900 transition-colors">End User Agreement</a></li>
           </ul>
-        </div>
-        <div>
-          <h3 class="text-white font-semibold mb-4">Contact</h3>
-          <ul class="space-y-2 text-sm">
-            <li><a href="tel:8135013229" class="hover:text-white">(813) 501-3229</a></li>
-            <li><a href="mailto:support@savvydealer.com" class="hover:text-white">support@savvydealer.com</a></li>
+          <h3 class="text-sm font-semibold uppercase tracking-wide mt-8 mb-4">Contact</h3>
+          <ul class="space-y-3 text-sm">
+            <li><a href="tel:8135013229" class="text-gray-500 hover:text-gray-900 transition-colors">(813) 501-3229</a></li>
+            <li><a href="mailto:support@savvydealer.com" class="text-gray-500 hover:text-gray-900 transition-colors">support@savvydealer.com</a></li>
             <li class="text-gray-400">2705 Wilson Rd, Land O Lakes, FL 34638</li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
+      <div class="border-t mt-16 pt-8 text-center text-sm text-gray-400">
         <p>&copy; 2024-2026 Savvy Dealer. All rights reserved.</p>
       </div>
     </div>
   </footer>
     <!-- Lead Form Modal -->
   <div id="lead-modal" class="hidden fixed inset-0 z-[100] items-center justify-center">
-    <div class="modal-overlay absolute inset-0 bg-black/50"></div>
+    <div class="modal-overlay absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
     <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 z-10">
       <button class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">&times;</button>
-      <h2 class="text-2xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-      <p class="text-gray-600 mb-6">Fill out the form below and we'll be in touch shortly.</p>
+      <h2 class="text-2xl font-serif font-bold text-gray-900 mb-2">Get in Touch</h2>
+      <p class="text-gray-500 mb-6">Fill out the form below and we'll be in touch shortly.</p>
       <form data-ajax action="/api/lead-form">
         <div class="space-y-4">
           <div>
             <label for="modal-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
-            <input type="text" id="modal-name" name="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <input type="text" id="modal-name" name="name" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none">
           </div>
           <div>
             <label for="modal-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input type="email" id="modal-email" name="email" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <input type="email" id="modal-email" name="email" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none">
           </div>
           <div>
             <label for="modal-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-            <input type="tel" id="modal-phone" name="phone" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <input type="tel" id="modal-phone" name="phone" required class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none">
           </div>
           <div>
             <label for="modal-dealership" class="block text-sm font-medium text-gray-700 mb-1">Dealership</label>
-            <input type="text" id="modal-dealership" name="dealership" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <input type="text" id="modal-dealership" name="dealership" class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none">
           </div>
           <div>
             <label for="modal-message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-            <textarea id="modal-message" name="message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+            <textarea id="modal-message" name="message" rows="3" class="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0088ff] focus:border-[#0088ff] outline-none"></textarea>
           </div>
         </div>
-        <button type="submit" class="mt-6 w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition">Send Message</button>
+        <button type="submit" class="mt-6 w-full bg-[#0088ff] text-white py-3 px-6 rounded-full font-semibold hover:bg-[#0077e6] transition min-h-[44px]">Send Message</button>
       </form>
     </div>
   </div>
