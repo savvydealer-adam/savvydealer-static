@@ -16,23 +16,23 @@ def service_page(filename, data):
     hero_img = d.get("hero_image", "")
     hero_img_webp = d.get("hero_image_webp", "")
 
-    # Benefits list
+    # Benefits list (2-column grid like live site)
     benefits_html = ""
     for b in d.get("benefits", {}).get("items", []):
         benefits_html += f'''          <li class="flex items-start gap-3">
             <svg class="h-6 w-6 shrink-0" style="color:{accent}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span class="text-gray-500">{b}</span>
+            <span class="text-gray-600">{b}</span>
           </li>\n'''
 
-    # Features grid
+    # Features grid (rounded icon containers like live site)
     features_html = ""
     for f in d.get("features", {}).get("items", []):
-        features_html += f'''        <div class="rounded-xl border border-gray-200 bg-gray-50 p-6">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg" style="background-color:{accent}20;color:{accent}">
+        features_html += f'''        <div class="rounded-xl border border-gray-200 bg-white p-8">
+          <div class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-full" style="background-color:{accent}15;color:{accent}">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
           </div>
-          <h3 class="text-xl font-bold mb-2">{f["title"]}</h3>
-          <p class="text-gray-500">{f["description"]}</p>
+          <h3 class="font-serif text-xl font-bold mb-3">{f["title"]}</h3>
+          <p class="text-gray-500 leading-relaxed">{f["description"]}</p>
         </div>\n'''
 
     # Stats
@@ -162,6 +162,8 @@ def service_page(filename, data):
 
 SERVICE_PAGES = {
     "facebook-ads.html": {
+        "hero_image": "/images/Professional_hero_background_image_8c13e03a.png",
+        "hero_image_webp": "/images/Professional_hero_background_image_8c13e03a.webp",
         "badge": "Social Media Advertising",
         "title": "Facebook Advertising For Auto Dealers",
         "subtitle": "Cost-Effective Lead Generation That Works While You Sleep",
@@ -222,6 +224,8 @@ SERVICE_PAGES = {
         ]
     },
     "dealer-seo.html": {
+        "hero_image": "/images/Professional_hero_background_image_8c13e03a.png",
+        "hero_image_webp": "/images/Professional_hero_background_image_8c13e03a.webp",
         "badge": "Search Engine Optimization",
         "title": "Dealer SEO + GEO Strategy",
         "subtitle": "Appear First in Google AND ChatGPT",
@@ -282,6 +286,8 @@ SERVICE_PAGES = {
         ]
     },
     "ppc-ads.html": {
+        "hero_image": "/images/Professional_hero_background_image_8c13e03a.png",
+        "hero_image_webp": "/images/Professional_hero_background_image_8c13e03a.webp",
         "badge": "Paid Search Advertising",
         "title": "PPC & SEM Advertising For Auto Dealers",
         "subtitle": "We Dominate Markets. We Don't Share Them.",
@@ -342,6 +348,8 @@ SERVICE_PAGES = {
         ]
     },
     "vehicle-ads.html": {
+        "hero_image": "/images/Professional_hero_background_image_8c13e03a.png",
+        "hero_image_webp": "/images/Professional_hero_background_image_8c13e03a.webp",
         "badge": "Vehicle Listing Ads",
         "title": "Stop Setting Your VLA Budget on Fire",
         "subtitle": "Get a Free Waste Audit & Reclaim Thousands in Wasted Ad Spend",
@@ -401,6 +409,8 @@ SERVICE_PAGES = {
         ]
     },
     "dealer-websites.html": {
+        "hero_image": "/images/Professional_hero_background_image_8c13e03a.png",
+        "hero_image_webp": "/images/Professional_hero_background_image_8c13e03a.webp",
         "badge": "Website Solutions",
         "title": "AI-Optimized Dealer Websites",
         "subtitle": "Built For Performance, Not Politics",
@@ -460,6 +470,8 @@ SERVICE_PAGES = {
         ]
     },
     "fully-managed-marketing.html": {
+        "hero_image": "/images/Fully_managed_marketing_orange_theme_c07bcc36.png",
+        "hero_image_webp": "/images/Fully_managed_marketing_orange_theme_c07bcc36-640w.webp",
         "badge": "Premium Service",
         "title": "Complete Automotive Marketing Solution",
         "subtitle": "Focus on selling cars. We'll handle everything else.",
@@ -607,8 +619,8 @@ def generate_home():
     <section class="overflow-hidden">
       <div class="py-32 text-center">
         <div class="mx-auto max-w-4xl px-6 sm:px-8">
-          <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-6">Our Products</h2>
-          <p class="text-xl sm:text-2xl text-gray-500">Comprehensive marketing solutions built exclusively for automotive dealerships</p>
+          <h2 class="font-serif text-5xl sm:text-6xl font-bold mb-6">Savvy Product Suite</h2>
+          <p class="text-xl sm:text-2xl text-gray-500">Customized marketing that outsmart the competition</p>
         </div>
       </div>
     </section>
