@@ -4,8 +4,9 @@ import json
 import re
 from pathlib import Path
 
-BASE = Path("C:/Users/adam/savvydealer-static/public")
-CONTENT_DIR = Path("C:/Users/adam/savvydealer-static/content/blog")
+PROJECT_ROOT = Path(__file__).resolve().parent
+BASE = PROJECT_ROOT / "public"
+CONTENT_DIR = PROJECT_ROOT / "content" / "blog"
 DOMAIN = "https://www.savvydealer.com"
 PHONE = "(813) 501-3229"
 PHONE_HREF = "8135013229"
