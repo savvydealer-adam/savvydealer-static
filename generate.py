@@ -57,29 +57,7 @@ def head(title, description, canonical_path, og_type="website", extra_head=""):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {{
-      theme: {{
-        extend: {{
-          fontFamily: {{
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Space Grotesk', 'sans-serif'],
-          }},
-          borderRadius: {{
-            lg: '9px',
-            md: '6px',
-            sm: '3px',
-          }},
-        }}
-      }}
-    }}
-  </script>
-  <style>
-    body {{ font-family: 'Inter', sans-serif; }}
-    .font-serif {{ font-family: 'Space Grotesk', sans-serif; }}
-    html {{ scroll-padding-top: 5rem; }}
-  </style>
+  <link rel="stylesheet" href="/css/tailwind.min.css">
   <script src="https://www.google.com/recaptcha/api.js?render={RECAPTCHA_SITE_KEY}" async defer></script>
   {extra_head}
 </head>'''

@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@source "../public/**/*.html";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif;
+  --radius-lg: 9px;
+  --radius-md: 6px;
+  --radius-sm: 3px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+.font-serif {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+html {
+  scroll-padding-top: 5rem;
+}

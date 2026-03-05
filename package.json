@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "scripts": {
     "start": "node server.js",
-    "generate": "python generate.py"
+    "generate": "python generate.py",
+    "build:css": "npx @tailwindcss/cli -i src/input.css -o public/css/tailwind.min.css --minify",
+    "build": "python generate.py && npm run build:css"
   },
   "dependencies": {
     "compression": "^1.8.1",
     "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.2.1",
+    "tailwindcss": "^4.2.1"
   }
 }
