@@ -471,7 +471,7 @@ SERVICE_PAGES = {
     },
     "fully-managed-marketing.html": {
         "hero_image": "/images/Fully_managed_marketing_orange_theme_c07bcc36.png",
-        "hero_image_webp": "/images/Fully_managed_marketing_orange_theme_c07bcc36-640w.webp",
+        "hero_image_webp": "/images/Fully_managed_marketing_orange_theme_c07bcc36.webp",
         "badge": "Premium Service",
         "title": "Complete Automotive Marketing Solution",
         "subtitle": "Focus on selling cars. We'll handle everything else.",
@@ -576,7 +576,7 @@ def generate_home():
           <div class="{order_img}">
             <div class="relative overflow-hidden rounded-3xl">
               <picture>
-                <source srcset="/images/{img_base}-640w.webp" type="image/webp">
+                <source srcset="/images/{img_base}.webp" type="image/webp">
                 <img src="/images/{img_base}.png" alt="{name}" class="h-full w-full object-cover" loading="lazy">
               </picture>
               <div class="absolute inset-0" style="background:linear-gradient(135deg, {color} 0%, transparent 100%);opacity:0.1"></div>
@@ -592,7 +592,7 @@ def generate_home():
     <!-- Hero -->
     <section class="relative flex min-h-screen items-center justify-center overflow-hidden">
       <picture class="absolute inset-0 z-0">
-        <source srcset="/images/Automotive_dealership_hero_image_d17995ec-640w.webp" type="image/webp">
+        <source srcset="/images/Automotive_dealership_hero_image_d17995ec.webp" type="image/webp">
         <img src="/images/Automotive_dealership_hero_image_d17995ec.png" alt="Automotive dealership" class="h-full w-full object-cover" loading="eager" fetchpriority="high">
       </picture>
       <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
